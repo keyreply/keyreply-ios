@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "KEYKeyReplyView.h"
 
 FOUNDATION_EXPORT double KeyReplyVersionNumber;
 FOUNDATION_EXPORT const unsigned char KeyReplyVersionString[];

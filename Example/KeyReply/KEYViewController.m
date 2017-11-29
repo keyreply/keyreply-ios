@@ -7,9 +7,10 @@
 //
 
 #import "KEYViewController.h"
+#import <KeyReply/KeyReply-umbrella.h>
 
 @interface KEYViewController ()
-
+@property (nonatomic, weak) IBOutlet KEYKeyReplyView * chatView;
 @end
 
 @implementation KEYViewController
