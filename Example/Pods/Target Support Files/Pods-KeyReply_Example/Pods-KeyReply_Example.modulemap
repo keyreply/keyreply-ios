@@ -1,0 +1,6 @@
+framework module Pods_KeyReply_Example {
+  umbrella header "Pods-KeyReply_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}

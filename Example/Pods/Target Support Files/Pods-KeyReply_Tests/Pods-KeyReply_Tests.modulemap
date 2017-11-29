@@ -1,0 +1,6 @@
+framework module Pods_KeyReply_Tests {
+  umbrella header "Pods-KeyReply_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
