@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KeyReply'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of KeyReply.'
+  s.version          = '0.0.1'
+  s.summary          = 'KeyReply SDK for iOS'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/Torin Nguyen/KeyReply'
+  s.homepage         = 'https://gitlab.com/originallyus/keyreply-ios'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Torin Nguyen' => 'torinnguyen@gmail.com' }
-  s.source           = { :git => 'https://github.com/Torin Nguyen/KeyReply.git', :tag => s.version.to_s }
+  s.author           = { 'KeyReply' => 'developer@keyreply.com' }
+  s.source           = { :git => 'git@gitlab.com:originallyus/keyreply-ios.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
