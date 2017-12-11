@@ -587,7 +587,7 @@
 			baseConfigurationReference = 48F9ACF6FCE5FFA9E65EE200 /* Pods-KeyReply_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Torin Nguyen (R54S259LJ5)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Originally US LLP";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = L4W2ME86EE;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
