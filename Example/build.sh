@@ -1,6 +1,6 @@
 #!/bin/sh
 
-HTTP_JOB_NAME="aia-ios"
+HTTP_JOB_NAME="keyreply-ios"
 SCHEMES_TO_BUILD=("KeyReply_Example")
 
 CODE_SIGN_IDENTITY="iPhone Distribution: Originally US LLP"
