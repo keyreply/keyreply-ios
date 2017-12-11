@@ -1,6 +1,6 @@
 {
   "name": "KeyReply",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "summary": "KeyReply SDK for iOS",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://gitlab.com/originallyus/keyreply-ios",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://gitlab.com/originallyus/keyreply-ios",
-    "tag": "0.0.1"
+    "tag": "0.0.4"
   },
   "platforms": {
     "ios": "8.0"
