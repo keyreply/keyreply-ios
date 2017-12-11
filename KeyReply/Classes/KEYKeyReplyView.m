@@ -74,7 +74,6 @@
     webView.navigationDelegate = self;
     webView.UIDelegate = self;
     webView.navigationDelegate = self;
-    webView.userCo
     webView.scrollView.showsVerticalScrollIndicator = NO;
     webView.scrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:webView];
