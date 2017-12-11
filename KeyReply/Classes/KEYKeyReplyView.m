@@ -149,8 +149,15 @@
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 {
-    //Handle special keyreplysdk:// url
     NSString * absUrl = navigationAction.request.URL.absoluteString;
+    
+    //Get this out of the way first
+    if ([absUrl isEqualToString:self.webViewUrl]) {
+        decisionHandler(WKNavigationActionPolicyAllow);
+        return;
+    }
+    
+    //Handle special keyreplysdk:// url
     BOOL sdkCallback = [absUrl hasPrefix:SDK_URL_SCHEME];
     if (sdkCallback) {
         [self handleSDKcallback:navigationAction.request.URL];
