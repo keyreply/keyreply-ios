@@ -9,4 +9,9 @@
 
 @interface KEYKeyReplyView : UIView
 
+- (void)reload;
+- (void)enableDebugMode;
+- (void)enableStagingMode;
+- (void)enableProductionMode;
+
 @end

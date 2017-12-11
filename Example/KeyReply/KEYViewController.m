@@ -18,13 +18,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+ 
+    [self.chatView enableDebugMode];
+    [self.chatView reload];
 }
 
-- (void)didReceiveMemoryWarning
+
+#pragma mark - Actions
+
+- (IBAction)onBtnDevelopment:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self.chatView enableDebugMode];
+    [self.chatView reload];
 }
 
+- (IBAction)onBtnStaging:(id)sender
+{
+    [self.chatView enableStagingMode];
+    [self.chatView reload];
+}
+
+- (IBAction)onBtnProduction:(id)sender
+{
+    //Default
+    [self.chatView enableProductionMode];
+    [self.chatView reload];
+}
 @end

@@ -8,23 +8,15 @@
 #import <WebKit/WebKit.h>
 #import "KEYKeyReplyView.h"
 
-#ifdef PRODUCTION
-    //Actual production
-    #define DEMO_URL                @"https://files.keyreply.com/demo/index.html"
-#else
-#ifdef DEBUG
-    //Debug
-    #define DEMO_URL                @"https://files.keyreply.com/demo/index.html"
-#else
-    //Staging, archive for private beta
-    #define DEMO_URL                @"https://files.keyreply.com/demo/index.html"
-#endif
-#endif
+#define PRODUCTION_URL                  @"https://files.keyreply.com/demo/index.html"
+#define STAGING_URL                     @"https://rightfrom.us/temp/keyreply/"
+#define DEV_URL                         @"https://rightfrom.us/temp/keyreply/"
 
-#define SDK_URL_SCHEME              @"keyreplysdk://"
+#define SDK_URL_SCHEME                  @"keyreplysdk://"
 
 @interface KEYKeyReplyView() <WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate>
 @property (nonatomic, strong) WKWebView * webView;
+@property (nonatomic, copy) NSString * webViewUrl;
 @end
 
 @implementation KEYKeyReplyView
@@ -58,14 +50,15 @@
 
 - (void)setup
 {
+    //Default to production mode
+    self.webViewUrl = PRODUCTION_URL;
+    
     NSString *jScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
     WKUserScript * wkUScript = [[WKUserScript alloc] initWithSource:jScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
     WKUserContentController *wkUserController = [[WKUserContentController alloc] init];
     [wkUserController addUserScript:wkUScript];
     WKWebViewConfiguration *wkWebConfig = [[WKWebViewConfiguration alloc] init];
     wkWebConfig.userContentController = wkUserController;
-    
-    
     
     WKWebView * webView = [[WKWebView alloc] initWithFrame:self.bounds configuration:wkWebConfig];
     webView.backgroundColor = [UIColor clearColor];
@@ -78,9 +71,26 @@
     webView.scrollView.showsHorizontalScrollIndicator = NO;
     [self addSubview:webView];
     self.webView = webView;
-    
-    //Load webview
-    [self loadUrl:DEMO_URL];
+}
+
+- (void)reload {
+    [self loadUrl:self.webViewUrl];
+}
+
+
+#pragma mark - Public Interfaces
+
+- (void)enableDebugMode
+{
+    self.webViewUrl = DEV_URL;
+}
+- (void)enableStagingMode
+{
+    self.webViewUrl = STAGING_URL;
+}
+- (void)enableProductionMode
+{
+    self.webViewUrl = PRODUCTION_URL;
 }
 
 
