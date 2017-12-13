@@ -11,8 +11,9 @@
 #define PRODUCTION_URL                  @"https://files.keyreply.com/demo/index.html"
 #define STAGING_URL                     @"https://rightfrom.us/temp/keyreply/"
 #define DEV_URL                         @"https://rightfrom.us/temp/keyreply/"
+#define CUSTOM_USER_AGENT               @"KeyReplyiOSSDK"
 
-#define SDK_URL_SCHEME                  @"3766144944420760FDAE0606272289E9"
+#define SDK_URL_SCHEME                  @"keyreplysdk://"
 
 @interface KEYKeyReplyView() <WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate>
 @property (nonatomic, strong) WKWebView * webView;
@@ -68,6 +69,8 @@
     webView.UIDelegate = self;
     webView.scrollView.showsVerticalScrollIndicator = NO;
     webView.scrollView.showsHorizontalScrollIndicator = NO;
+    if (@available(iOS 9.0, *))
+        webView.customUserAgent = CUSTOM_USER_AGENT;
     [self addSubview:webView];
     self.webView = webView;
 }
@@ -160,6 +163,7 @@
     BOOL sdkCallback = [absUrl hasPrefix:SDK_URL_SCHEME];
     if (sdkCallback) {
         [self handleSDKcallback:navigationAction.request.URL];
+        decisionHandler(WKNavigationActionPolicyCancel);
         return;
     }
     
@@ -168,7 +172,12 @@
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error
 {
-    NSLog(@"%@", error);
+    [self handleNagivationError:error];
+}
+
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error
+{
+    [self handleNagivationError:error];
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation
@@ -176,6 +185,11 @@
     
 }
 
+- (void)handleNagivationError:(NSError *)error {
+    NSString * failingUrl = [error.userInfo objectForKey:NSURLErrorFailingURLStringErrorKey];
+    BOOL unsupportedUrl = error.code == NSURLErrorUnsupportedURL;
+    NSLog(@"%@", failingUrl);
+}
 
 #pragma mark - WKScriptMessageHandler
 
