@@ -63,7 +63,7 @@
 - (void)setup
 {
     self.debugMode = NO;
-    self.autoOpenOnStart = YES;
+    self.autoOpenOnStart = NO;
     
     //Default to production mode
     self.webViewUrl = PRODUCTION_URL;
