@@ -63,7 +63,7 @@
 - (void)setup
 {
     self.debugMode = NO;
-    self.autoOpenOnStart = NO;
+    self.autoOpenOnStart = YES;
     
     //Default to production mode
     self.webViewUrl = PRODUCTION_URL;
@@ -148,7 +148,15 @@
 
 - (void)sendMessage:(NSString *)message
 {
-    [self performKeyReplyAction:ACTION_SEND_MESSAGE parameter:message completionHandler:^(id _Nullable results, NSError * _Nullable error) {
+    if ([message length] <= 0)
+        return;
+    
+    NSDictionary * payload = @{@"text":message};
+    NSString * payloadJsonString = [self convertDictionaryToString:payload];
+    if ([payloadJsonString length] < 5)
+        return;
+    
+    [self performKeyReplyAction:ACTION_SEND_MESSAGE parameter:payloadJsonString completionHandler:^(id _Nullable results, NSError * _Nullable error) {
         
     }];
 }
@@ -193,6 +201,18 @@
     [[[UIApplication sharedApplication] keyWindow].rootViewController presentViewController:alertController animated:YES completion:nil];
 }
 
+- (NSString *)convertDictionaryToString:(NSDictionary *)dict
+{
+    //it takes dic, array, primitive types only. giving error if custom object.
+    NSError * error;
+    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:dict
+                                                        options:NSJSONReadingMutableLeaves
+                                                          error:&error];
+    NSString * nsJson = [[NSString alloc] initWithData:jsonData
+                                              encoding:NSUTF8StringEncoding];
+    return nsJson;
+}
+
 
 #pragma mark - Interface to SDK
 
@@ -215,7 +235,7 @@
 {
     NSString * jsString = nil;
     if ([parameter length] > 0)
-        jsString = [NSString stringWithFormat:@"$keyreply.dispatch('%@', '%@')", action, parameter];
+        jsString = [NSString stringWithFormat:@"$keyreply.dispatch('%@', %@)", action, parameter];
     else
         jsString = [NSString stringWithFormat:@"$keyreply.dispatch('%@')", action];
     [self evaluateJavaScript:jsString completionHandler:completionHandler];
