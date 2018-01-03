@@ -68,7 +68,11 @@
     //Default to production mode
     self.webViewUrl = PRODUCTION_URL;
     
-    NSString *jScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+    NSString * jScript =
+    @"var meta = document.createElement('meta'); " \
+    "meta.setAttribute( 'name', 'viewport' ); " \
+    "meta.setAttribute( 'content', 'width = device-width, initial-scale = 1.0, minimum-scale = 1.0, maximum-scale = 1.0, user-scalable = yes' ); " \
+    "document.getElementsByTagName('head')[0].appendChild(meta)";
     WKUserScript * wkUScript = [[WKUserScript alloc] initWithSource:jScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
     WKUserContentController *wkUserController = [[WKUserContentController alloc] init];
     [wkUserController addUserScript:wkUScript];
