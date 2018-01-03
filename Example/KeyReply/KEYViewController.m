@@ -24,6 +24,18 @@
 }
 
 
+#pragma mark - Helper
+
+- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message
+{
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:title
+                                                                              message:message
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+
 #pragma mark - Actions
 
 - (IBAction)onBtnDevelopment:(id)sender
@@ -44,4 +56,28 @@
     [self.chatView enableProductionMode];
     [self.chatView reload];
 }
+
+- (IBAction)onBtnOpen:(id)sender
+{
+    [self.chatView openChatWindow];
+}
+
+- (IBAction)onBtnClose:(id)sender
+{
+    [self.chatView closeChatWindow];
+}
+
+- (IBAction)onBtnSendMessage:(id)sender
+{
+    [self.chatView sendMessage:@"hello world"];
+}
+
+- (IBAction)onBtnActions:(id)sender
+{
+    //Default
+    [self.chatView availableActions:^(NSString *actions) {
+        [self showAlertWithTitle:nil message:actions];
+    }];
+}
+
 @end

@@ -14,4 +14,10 @@
 - (void)enableStagingMode;
 - (void)enableProductionMode;
 
+- (void)openChatWindow;
+- (void)closeChatWindow;
+- (void)toggleChatWindow;
+- (void)availableActions:(void (^ _Nullable)(NSString * actions))completionHandler;
+- (void)sendMessage:(NSString *)message;
+
 @end

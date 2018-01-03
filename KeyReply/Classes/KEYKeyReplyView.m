@@ -9,15 +9,25 @@
 #import "KEYKeyReplyView.h"
 
 #define PRODUCTION_URL                  @"https://files.keyreply.com/demo/index.html"
-#define STAGING_URL                     @"https://rightfrom.us/temp/keyreply/"
+#define STAGING_URL                     @"https://files.keyreply.com/demo/index.html"
 #define DEV_URL                         @"https://rightfrom.us/temp/keyreply/"
 #define CUSTOM_USER_AGENT               @"KeyReplyiOSSDK"
 
 #define SDK_URL_SCHEME                  @"keyreplysdk://"
 
+#define ACTION_OPEN_CHAT_WINDOW         @"OPEN_CHAT_WINDOW"
+#define ACTION_CLOSE_CHAT_WINDOW        @"CLOSE_CHAT_WINDOW"
+#define ACTION_TOGGLE_CHAT_WINDOW       @"TOGGLE_CHAT_WINDOW"
+#define ACTION_SEND_MESSAGE             @"SEND_MESSAGE"
+#define ACTION_SEND_POSTBACK            @"SEND_POSTBACK"
+
+#define ERROR_ALERT_TITLE               @"SDK Error"
+
+
 @interface KEYKeyReplyView() <WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate>
 @property (nonatomic, strong) WKWebView * webView;
 @property (nonatomic, copy) NSString * webViewUrl;
+@property (nonatomic, assign) BOOL debugMode;
 @end
 
 @implementation KEYKeyReplyView
@@ -51,6 +61,8 @@
 
 - (void)setup
 {
+    self.debugMode = NO;
+    
     //Default to production mode
     self.webViewUrl = PRODUCTION_URL;
     
@@ -75,7 +87,8 @@
     self.webView = webView;
 }
 
-- (void)reload {
+- (void)reload
+{
     [self loadUrl:self.webViewUrl];
 }
 
@@ -84,15 +97,68 @@
 
 - (void)enableDebugMode
 {
+    self.debugMode = YES;
     self.webViewUrl = DEV_URL;
 }
 - (void)enableStagingMode
 {
+    self.debugMode = YES;
     self.webViewUrl = STAGING_URL;
 }
 - (void)enableProductionMode
 {
+    self.debugMode = NO;
     self.webViewUrl = PRODUCTION_URL;
+}
+
+- (void)openChatWindow
+{
+    [self performKeyReplyAction:ACTION_OPEN_CHAT_WINDOW parameter:nil completionHandler:^(id _Nullable results, NSError * _Nullable error) {
+
+    }];
+}
+
+- (void)closeChatWindow
+{
+    [self performKeyReplyAction:ACTION_CLOSE_CHAT_WINDOW parameter:nil completionHandler:^(id _Nullable results, NSError * _Nullable error) {
+
+    }];
+}
+
+- (void)toggleChatWindow
+{
+    [self performKeyReplyAction:ACTION_TOGGLE_CHAT_WINDOW parameter:nil completionHandler:^(id _Nullable results, NSError * _Nullable error) {
+
+    }];
+}
+
+- (void)sendMessage:(NSString *)message
+{
+    [self performKeyReplyAction:ACTION_SEND_MESSAGE parameter:message completionHandler:^(id _Nullable results, NSError * _Nullable error) {
+        
+    }];
+}
+
+- (void)availableActions:(void (^ _Nullable)(NSString * actions))completionHandler
+{
+    [self evaluateJavaScript:@"$keyreply.actions" completionHandler:^(id _Nullable results, NSError * _Nullable error) {
+        if (error) {
+            [self showAlertWithTitle:ERROR_ALERT_TITLE message:[error localizedDescription]];
+            completionHandler(nil);
+            return;
+        }
+        
+        if (results == nil) {
+            [self showAlertWithTitle:@"No available actions" message:[error localizedDescription]];
+            if (completionHandler)
+                completionHandler(nil);
+            return;
+        }
+        
+        NSString * resultString = [NSString stringWithFormat:@"%@", results];
+        if (completionHandler)
+            completionHandler(resultString);
+    }];
 }
 
 
@@ -104,14 +170,41 @@
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
+- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message
+{
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:title
+                                                                              message:message
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    [[[UIApplication sharedApplication] keyWindow].rootViewController presentViewController:alertController animated:YES completion:nil];
+}
+
 
 #pragma mark - Interface to SDK
 
-- (void)evaluateJavaScript:(NSString *)javaScriptString completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))completionHandler
+- (void)evaluateJavaScript:(NSString *)javaScriptString completionHandler:(void (^ _Nullable)(_Nullable id results, NSError * _Nullable error))completionHandler
 {
-    [self.webView evaluateJavaScript:javaScriptString completionHandler:^(id _Nullable results, NSError * _Nullable error) {
+    if (self.debugMode)
+        NSLog(@"Executing Javascript:\n%@", javaScriptString);
         
+    [self.webView evaluateJavaScript:javaScriptString completionHandler:^(id _Nullable results, NSError * _Nullable error) {
+        if (results != nil)
+            NSLog(@"%@", results);
+        if (error != nil)
+            NSLog(@"%@", error);
+        if (completionHandler)
+            completionHandler(results, error);
     }];
+}
+
+- (void)performKeyReplyAction:(NSString *)action parameter:(NSString *)parameter completionHandler:(void (^ _Nullable)(_Nullable id results, NSError * _Nullable error))completionHandler
+{
+    NSString * jsString = nil;
+    if ([parameter length] > 0)
+        jsString = [NSString stringWithFormat:@"$keyreply.dispatch('%@', '%@')", action, parameter];
+    else
+        jsString = [NSString stringWithFormat:@"$keyreply.dispatch('%@')", action];
+    [self evaluateJavaScript:jsString completionHandler:completionHandler];
 }
 
 
@@ -134,12 +227,7 @@
     NSString * alertString = [parameters objectForKey:@"alert"];
     if ([alertString length] > 0) {
         NSString * titleString = [parameters objectForKey:@"title"];
-        UIAlertController * alertController = [UIAlertController alertControllerWithTitle:titleString
-                                                                                  message:alertString
-                                                                           preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-        
-        [[[UIApplication sharedApplication] keyWindow].rootViewController presentViewController:alertController animated:YES completion:nil];
+        [self showAlertWithTitle:titleString message:alertString];
         return;
     }
     
@@ -203,11 +291,7 @@
 
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler
 {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        completionHandler();
-    }]];
-    [[[UIApplication sharedApplication] keyWindow].rootViewController presentViewController:alertController animated:YES completion:^{}];
+    [self showAlertWithTitle:nil message:message];
 }
 
 - (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString *))completionHandler
