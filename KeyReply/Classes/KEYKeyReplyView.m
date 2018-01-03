@@ -28,6 +28,7 @@
 @property (nonatomic, strong) WKWebView * webView;
 @property (nonatomic, copy) NSString * webViewUrl;
 @property (nonatomic, assign) BOOL debugMode;
+@property (nonatomic, assign) BOOL autoOpenOnStart;
 @end
 
 @implementation KEYKeyReplyView
@@ -62,6 +63,7 @@
 - (void)setup
 {
     self.debugMode = NO;
+    self.autoOpenOnStart = YES;
     
     //Default to production mode
     self.webViewUrl = PRODUCTION_URL;
@@ -93,7 +95,7 @@
 }
 
 
-#pragma mark - Public Interfaces
+#pragma mark - Public Settings
 
 - (void)enableDebugMode
 {
@@ -110,6 +112,14 @@
     self.debugMode = NO;
     self.webViewUrl = PRODUCTION_URL;
 }
+
+- (void)autoOpenOnStart:(BOOL)enabled
+{
+    self.autoOpenOnStart = enabled;
+}
+
+
+#pragma mark - Public Interfaces
 
 - (void)openChatWindow
 {
@@ -186,7 +196,7 @@
 {
     if (self.debugMode)
         NSLog(@"Executing Javascript:\n%@", javaScriptString);
-        
+    
     [self.webView evaluateJavaScript:javaScriptString completionHandler:^(id _Nullable results, NSError * _Nullable error) {
         if (results != nil)
             NSLog(@"%@", results);
@@ -270,14 +280,18 @@
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation
 {
-    
+    BOOL isMainLoad = [webView.URL.absoluteString isEqualToString:self.webViewUrl];
+    if (isMainLoad && self.autoOpenOnStart)
+        [self openChatWindow];
 }
 
-- (void)handleNagivationError:(NSError *)error {
+- (void)handleNagivationError:(NSError *)error
+{
     NSString * failingUrl = [error.userInfo objectForKey:NSURLErrorFailingURLStringErrorKey];
     BOOL unsupportedUrl = error.code == NSURLErrorUnsupportedURL;
     NSLog(@"%@", failingUrl);
 }
+
 
 #pragma mark - WKScriptMessageHandler
 

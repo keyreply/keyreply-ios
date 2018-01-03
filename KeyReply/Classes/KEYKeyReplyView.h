@@ -13,6 +13,7 @@
 - (void)enableDebugMode;
 - (void)enableStagingMode;
 - (void)enableProductionMode;
+- (void)autoOpenOnStart:(BOOL)enabled;
 
 - (void)openChatWindow;
 - (void)closeChatWindow;
