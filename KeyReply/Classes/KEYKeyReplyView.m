@@ -221,10 +221,11 @@
     if (self.debugMode)
         NSLog(@"Executing Javascript:\n%@", javaScriptString);
     
+    BOOL isDebugLog = self.debugMode;
     [self.webView evaluateJavaScript:javaScriptString completionHandler:^(id _Nullable results, NSError * _Nullable error) {
-        if (results != nil)
+        if (isDebugLog && results != nil)
             NSLog(@"%@", results);
-        if (error != nil)
+        if (isDebugLog && error != nil)
             NSLog(@"%@", error);
         if (completionHandler)
             completionHandler(results, error);
@@ -312,8 +313,17 @@
 - (void)handleNagivationError:(NSError *)error
 {
     NSString * failingUrl = [error.userInfo objectForKey:NSURLErrorFailingURLStringErrorKey];
-    BOOL unsupportedUrl = error.code == NSURLErrorUnsupportedURL;
     NSLog(@"%@", failingUrl);
+    
+    BOOL unsupportedUrl = error.code == NSURLErrorUnsupportedURL;
+    BOOL isUnsecured = [failingUrl rangeOfString:@"https://"].location == NSNotFound;
+    
+    if (isUnsecured) {
+        [self showAlertWithTitle:@"Unsecured URL" message:failingUrl];
+    }
+    else {
+        [self showAlertWithTitle:@"Unsupported URL" message:failingUrl];
+    }
 }
 
 
