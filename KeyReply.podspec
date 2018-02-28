@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KeyReply'
-  s.version          = '0.0.4'
+  s.version          = '0.0.5'
   s.summary          = 'KeyReply SDK for iOS'
 
 # This description is used to generate tags and improve search results.
@@ -18,15 +18,14 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+                       KeyReply SDK for iOS
                        DESC
 
-  s.homepage         = 'https://gitlab.com/originallyus/keyreply-ios'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/originallyus/keyreply-ios'
+  s.screenshots      = 'https://github.com/originallyus/keyreply-ios/blob/master/example_screenshot.png?raw=true'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'KeyReply' => 'developer@keyreply.com' }
-  s.source           = { :git => 'https://gitlab.com/originallyus/keyreply-ios', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => 'https://github.com/originallyus/keyreply-ios.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
 
