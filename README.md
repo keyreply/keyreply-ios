@@ -9,7 +9,7 @@
 
 Demo application is included in the `Example` folder. To run it, clone the repo, and run `pod install` from the Example directory first.
 
-![KeyReplySDK Demo](https://gitlab.com/originallyus/keyreply-ios/raw/master/example_screenshot.png)
+![KeyReplySDK Demo](https://github.com/originallyus/keyreply-ios/blob/master/example_screenshot.png?raw=true)
 
 
 
