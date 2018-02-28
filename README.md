@@ -62,10 +62,11 @@ keyReplyView.clientId = @"5f6cc7e4e2";
 
 KeyReplySDK uses a default client ID out of the box for demo purpose. Please obtain your own Client ID from KeyReply reprensentative directly.
 
-KeyReplySDK will not automatically load its content. It is neccessary to call `reload` function whenever you want to start using it. Normally it is done in `viewDidLoad` function.
+KeyReplySDK will not automatically load its content. It is neccessary to call `reload` function whenever you want to start using it. Normally it is done in `viewDidLoad` function, after all customizations options are provided.
 
 ```objective-c
 keyReplyView.clientId = @"5f6cc7e4e2";
+keyReplyView.autoOpenOnStart = NO;
 [keyReplyView reload];
 ```
 
@@ -102,8 +103,7 @@ All customization of appearance are to be done via KeyReply's web console.
 Chat message can be sent via KeyReplySDK UI or done programmatically as followed:
 
 ```objective-c
-NSString * msg = @"Hello world!";
-[keyReplyView sendMessage:msg];
+[keyReplyView sendMessage:@"Hello world!"];
 ```
 
 
