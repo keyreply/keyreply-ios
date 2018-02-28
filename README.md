@@ -28,7 +28,7 @@ pod 'KeyReply'
 You can also add this project:
  * as git submodule
  * simply download and copy source files to your project
- 
+
 
 
 ## Requirements
@@ -46,6 +46,7 @@ KeyReplySDK can be added to your view controller via Interface Builder:
  * Drop a regular UIView to your view controller
  * Set its custom class as `KEYKeyReplyView` class
  * Hook it up to an IBOutlet in your view controller code
+ * Perform intialization step detailed below
 
 ### Add KeyReplySDK programmatically
 
