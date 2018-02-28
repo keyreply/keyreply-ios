@@ -28,15 +28,7 @@ pod 'KeyReply'
 You can also add this project:
  * as git submodule
  * simply download and copy source files to your project
-
-### Objective-C integration
-
-KeyReplySDK is fully compatible with Swift and Objective-C. To import it to your project just add the following line:
-
-```objective-c
-@import KeyReply;
-```
-
+ 
 
 
 ## Requirements
