@@ -234,7 +234,7 @@
     //it takes dic, array, primitive types only. giving error if custom object.
     NSError * error;
     NSData * jsonData = [NSJSONSerialization dataWithJSONObject:dict
-                                                        options:NSJSONReadingAllowFragments
+                                                        options:NSJSONWritingPrettyPrinted
                                                           error:&error];
     NSString * nsJson = [[NSString alloc] initWithData:jsonData
                                               encoding:NSUTF8StringEncoding];
@@ -343,7 +343,6 @@
     NSString * failingUrl = [error.userInfo objectForKey:NSURLErrorFailingURLStringErrorKey];
     NSLog(@"%@", failingUrl);
     
-    BOOL unsupportedUrl = error.code == NSURLErrorUnsupportedURL;
     BOOL isUnsecured = [failingUrl rangeOfString:@"https://"].location == NSNotFound;
     
     if (isUnsecured) {
