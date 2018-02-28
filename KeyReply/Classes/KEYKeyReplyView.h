@@ -13,7 +13,8 @@
 - (void)enableDebugMode;
 - (void)enableStagingMode;
 - (void)enableProductionMode;
-- (void)autoOpenOnStart:(BOOL)enabled;
+- (void)setAutoOpenOnStart:(BOOL)enabled;
+- (BOOL)autoOpenOnStart;
 
 - (void)setClientId:(NSString * _Nonnull)clientId;
 - (NSString * _Nonnull)clientId;

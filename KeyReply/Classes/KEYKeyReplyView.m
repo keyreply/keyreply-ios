@@ -30,7 +30,7 @@
 @property (nonatomic, copy) NSString * webViewUrl;
 @property (nonatomic, copy) NSString * aClientId;
 @property (nonatomic, assign) BOOL debugMode;
-@property (nonatomic, assign) BOOL autoOpenOnStart;
+@property (nonatomic, assign) BOOL aAutoOpenOnStart;
 @end
 
 @implementation KEYKeyReplyView
@@ -65,7 +65,8 @@
 - (void)setup
 {
     self.debugMode = NO;
-    self.autoOpenOnStart = YES;
+    self.aAutoOpenOnStart = YES;
+    self.backgroundColor = [UIColor clearColor];
     
     //Default to production mode
     self.webViewUrl = PRODUCTION_URL;
@@ -84,10 +85,12 @@
     
     WKWebView * webView = [[WKWebView alloc] initWithFrame:self.bounds configuration:wkWebConfig];
     webView.backgroundColor = [UIColor clearColor];
+    webView.opaque = NO;
     webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     webView.clipsToBounds = YES;
     webView.navigationDelegate = self;
     webView.UIDelegate = self;
+    webView.scrollView.backgroundColor = [UIColor clearColor];
     webView.scrollView.showsVerticalScrollIndicator = NO;
     webView.scrollView.showsHorizontalScrollIndicator = NO;
     if (@available(iOS 9.0, *))
@@ -120,9 +123,14 @@
     self.webViewUrl = PRODUCTION_URL;
 }
 
-- (void)autoOpenOnStart:(BOOL)enabled
+- (void)setAutoOpenOnStart:(BOOL)enabled
 {
-    self.autoOpenOnStart = enabled;
+    self.aAutoOpenOnStart = enabled;
+}
+
+- (BOOL)autoOpenOnStart
+{
+    return self.aAutoOpenOnStart;
 }
 
 - (void)setClientId:(NSString *)clientId
@@ -326,7 +334,7 @@
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation
 {
     BOOL isMainLoad = [webView.URL.absoluteString isEqualToString:self.webViewUrl];
-    if (isMainLoad && self.autoOpenOnStart)
+    if (isMainLoad && self.aAutoOpenOnStart)
         [self openChatWindow];
 }
 
