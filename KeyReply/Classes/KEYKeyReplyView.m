@@ -136,6 +136,8 @@
 
 - (NSString *)clientId
 {
+    if (self.aClientId == nil)
+        return DEFAULT_CLIENT_ID;
     return self.aClientId;
 }
 

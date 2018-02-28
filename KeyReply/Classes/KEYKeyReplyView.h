@@ -15,13 +15,13 @@
 - (void)enableProductionMode;
 - (void)autoOpenOnStart:(BOOL)enabled;
 
-- (void)setClientId:(NSString *)clientId;
-- (NSString *)clientId;
+- (void)setClientId:(NSString * _Nonnull)clientId;
+- (NSString * _Nonnull)clientId;
 
 - (void)openChatWindow;
 - (void)closeChatWindow;
 - (void)toggleChatWindow;
 - (void)availableActions:(void (^ _Nullable)(NSString * actions))completionHandler;
-- (void)sendMessage:(NSString *)message;
+- (void)sendMessage:(NSString * _Nonnull)message;
 
 @end
