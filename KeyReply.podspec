@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KeyReply'
-  s.version          = '0.0.6'
+  s.version          = '0.0.7'
   s.summary          = 'KeyReply SDK for iOS'
 
 # This description is used to generate tags and improve search results.
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-                       KeyReply SDK for iOS
+KeyReply is your top choice for chatbots: We have worked with top governments and enterprises in Singapore and Asia.
                        DESC
 
   s.homepage         = 'https://github.com/originallyus/keyreply-ios'
