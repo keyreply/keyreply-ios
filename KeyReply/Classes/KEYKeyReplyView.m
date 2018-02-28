@@ -14,6 +14,7 @@
 #define CUSTOM_USER_AGENT               @"KeyReplyiOSSDK"
 
 #define SDK_URL_SCHEME                  @"keyreplysdk://"
+#define DEFAULT_CLIENT_ID               @"5f6cc7e4e2"
 
 #define ACTION_OPEN_CHAT_WINDOW         @"OPEN_CHAT_WINDOW"
 #define ACTION_CLOSE_CHAT_WINDOW        @"CLOSE_CHAT_WINDOW"
@@ -27,6 +28,7 @@
 @interface KEYKeyReplyView() <WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate>
 @property (nonatomic, strong) WKWebView * webView;
 @property (nonatomic, copy) NSString * webViewUrl;
+@property (nonatomic, copy) NSString * aClientId;
 @property (nonatomic, assign) BOOL debugMode;
 @property (nonatomic, assign) BOOL autoOpenOnStart;
 @end
@@ -67,6 +69,7 @@
     
     //Default to production mode
     self.webViewUrl = PRODUCTION_URL;
+    self.aClientId = DEFAULT_CLIENT_ID;
     
     NSString * jScript =
     @"var meta = document.createElement('meta'); " \
@@ -120,6 +123,20 @@
 - (void)autoOpenOnStart:(BOOL)enabled
 {
     self.autoOpenOnStart = enabled;
+}
+
+- (void)setClientId:(NSString *)clientId
+{
+    if (clientId == nil)
+        return;
+    if ([clientId length] < 5)
+        return;
+    self.aClientId = clientId;
+}
+
+- (NSString *)clientId
+{
+    return self.aClientId;
 }
 
 
@@ -188,6 +205,7 @@
 
 - (void)loadUrl:(NSString *)urlString
 {
+    urlString = [urlString stringByAppendingFormat:@"#%@", self.aClientId];
     NSURL * url = [NSURL URLWithString:urlString];
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
 }
@@ -206,7 +224,7 @@
     //it takes dic, array, primitive types only. giving error if custom object.
     NSError * error;
     NSData * jsonData = [NSJSONSerialization dataWithJSONObject:dict
-                                                        options:NSJSONReadingMutableLeaves
+                                                        options:NSJSONReadingAllowFragments
                                                           error:&error];
     NSString * nsJson = [[NSString alloc] initWithData:jsonData
                                               encoding:NSUTF8StringEncoding];

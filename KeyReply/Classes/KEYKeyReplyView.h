@@ -15,6 +15,9 @@
 - (void)enableProductionMode;
 - (void)autoOpenOnStart:(BOOL)enabled;
 
+- (void)setClientId:(NSString *)clientId;
+- (NSString *)clientId;
+
 - (void)openChatWindow;
 - (void)closeChatWindow;
 - (void)toggleChatWindow;
