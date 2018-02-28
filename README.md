@@ -1,29 +1,121 @@
 # KeyReply
 
-[![CI Status](http://img.shields.io/travis/Torin Nguyen/KeyReply.svg?style=flat)](https://travis-ci.org/Torin Nguyen/KeyReply)
 [![Version](https://img.shields.io/cocoapods/v/KeyReply.svg?style=flat)](http://cocoapods.org/pods/KeyReply)
 [![License](https://img.shields.io/cocoapods/l/KeyReply.svg?style=flat)](http://cocoapods.org/pods/KeyReply)
 [![Platform](https://img.shields.io/cocoapods/p/KeyReply.svg?style=flat)](http://cocoapods.org/pods/KeyReply)
 
+
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+Demo application is included in the `Example` folder. To run it, clone the repo, and run `pod install` from the Example directory first.
 
-## Requirements
+![KeyReplySDK Demo](https://gitlab.com/originallyus/keyreply-ios/raw/master/example_screenshot.png)
 
-## Installation
 
-KeyReply is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+
+## Adding KeyReplySDK to your app
+
+### CocoaPods
+
+To install StatusAlert using [CocoaPods](http://cocoapods.org), add the following line to your `Podfile`:
 
 ```ruby
 pod 'KeyReply'
 ```
 
-## Author
+### Manual installation
 
-Torin Nguyen, torinnguyen@gmail.com
+You can also add this project:
+ * as git submodule
+ * simply download and copy source files to your project
+
+### Objective-C integration
+
+KeyReplySDK is fully compatible with Swift and Objective-C. To import it to your project just add the following line:
+
+```objective-c
+@import KeyReply;
+```
+
+
+
+## Usage
+
+### Interface Builder
+
+KeyReplySDK can be added to your view controller via Interface Builder:
+ * Drop a regular UIView to your view controller
+ * Set its custom class as `KEYKeyReplyView` class
+ * Hook it up to an IBOutlet in your view controller code
+
+### Add KeyReplySDK programmatically
+
+KeyReplySDK can be initialize programmatically like regular UIView:
+
+```objective-c
+CGRect chatFrame = CGRectMake(0, 0, 320, 480);
+KEYKeyReplyView * keyReplyView = [[KEYKeyReplyView alloc] initWithFrame:chatFrame];
+keyReplyView.clientId = @"5f6cc7e4e2";
+```
+
+### Initialization
+
+KeyReplySDK uses a default client ID out of the box for demo purpose. Please obtain your own Client ID from KeyReply reprensentative directly.
+
+KeyReplySDK will not automatically load its content. It is neccessary to call `reload` function whenever you want to start using it. Normally it is done in `viewDidLoad` function.
+
+```objective-c
+keyReplyView.clientId = @"5f6cc7e4e2";
+[keyReplyView reload];
+```
+
+
+## Customizations
+
+### Collapse on load
+
+By default, KeyReplySDK will expand its chat windows automatically on load. This can be disabled by:
+
+```objective-c
+keyReplyView.autoOpenOnStart = NO;
+[keyReplyView reload];
+```
+
+### Appearance
+
+All customization of appearance are to be done via KeyReply's web console.
+
+
+
+## Action
+
+### Expand/Collapse chat window
+
+```objective-c
+[keyReplyView openChatWindow];
+[keyReplyView closeChatWindow];
+[keyReplyView toggleChatWindow];
+```
+
+### Send a chat message programmatically
+
+Chat message can be sent via KeyReplySDK UI or done programmatically as followed:
+
+```objective-c
+NSString * msg = @"Hello world!";
+[keyReplyView sendMessage:msg];
+```
+
+
 
 ## License
 
-KeyReply is available under the MIT license. See the LICENSE file for more info.
+The MIT License (MIT)
+
+Copyright (c) 2018 KeyReply
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

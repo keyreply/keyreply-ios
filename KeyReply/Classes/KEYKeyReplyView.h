@@ -22,7 +22,7 @@
 - (void)openChatWindow;
 - (void)closeChatWindow;
 - (void)toggleChatWindow;
-- (void)availableActions:(void (^ _Nullable)(NSString * actions))completionHandler;
+- (void)availableActions:(void (^ _Nullable)(NSString * _Nonnull actions))completionHandler;
 - (void)sendMessage:(NSString * _Nonnull)message;
 
 @end

@@ -17,10 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="grid" id="Bb1-GL-iRQ">
+                                <rect key="frame" x="0.0" y="124" width="375" height="543"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
                             <view contentMode="scaleToFill" misplaced="YES" id="NpO-qK-22U" customClass="KEYKeyReplyView">
                                 <rect key="frame" x="0.0" y="124" width="375" height="543"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="0.88719745710784315" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tA1-dp-q4N">
                                 <rect key="frame" x="0.0" y="22" width="123" height="45"/>
@@ -139,4 +144,7 @@
             <point key="canvasLocation" x="190.5" y="480.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="grid" width="512" height="512"/>
+    </resources>
 </document>
