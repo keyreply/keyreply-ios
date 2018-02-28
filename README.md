@@ -39,6 +39,13 @@ KeyReplySDK is fully compatible with Swift and Objective-C. To import it to your
 
 
 
+## Requirements
+
+* Xcode 8.0 or later
+* iOS 8.0 or later
+
+
+
 ## Usage
 
 ### Interface Builder
@@ -55,7 +62,9 @@ KeyReplySDK can be initialize programmatically like regular UIView:
 ```objective-c
 CGRect chatFrame = CGRectMake(0, 0, 320, 480);
 KEYKeyReplyView * keyReplyView = [[KEYKeyReplyView alloc] initWithFrame:chatFrame];
+[self.view addSubview:keyReplyView];
 keyReplyView.clientId = @"5f6cc7e4e2";
+[keyReplyView reload];
 ```
 
 ### Initialization
@@ -75,7 +84,7 @@ keyReplyView.autoOpenOnStart = NO;
 
 ### Collapse on load
 
-By default, KeyReplySDK will expand its chat windows automatically on load. This can be disabled by:
+By default, KeyReplySDK will show expanded UI on load. This can be disabled by:
 
 ```objective-c
 keyReplyView.autoOpenOnStart = NO;
@@ -90,7 +99,7 @@ All customization of appearance are to be done via KeyReply's web console.
 
 ## Action
 
-### Expand/Collapse chat window
+### Expand/Collapse/Toggle chat window
 
 ```objective-c
 [keyReplyView openChatWindow];
