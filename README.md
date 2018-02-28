@@ -68,7 +68,6 @@ KeyReplySDK will not automatically load its content. It is neccessary to call `r
 
 ```objective-c
 keyReplyView.clientId = @"5f6cc7e4e2";
-keyReplyView.autoOpenOnStart = NO;
 [keyReplyView reload];
 ```
 
