@@ -62,7 +62,7 @@ keyReplyView.clientId = @"5f6cc7e4e2";
 
 ### Initialization
 
-KeyReplySDK uses a default client ID out of the box for demo purpose. Please obtain your own Client ID from KeyReply reprensentative directly.
+KeyReplySDK uses a default client ID out of the box for demo purpose. Please obtain your own Client ID from KeyReply representative directly.
 
 KeyReplySDK will not automatically load its content. It is neccessary to call `reload` function whenever you want to start using it. Normally it is done in `viewDidLoad` function, after all customizations options are provided.
 
