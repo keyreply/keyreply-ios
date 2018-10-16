@@ -7,9 +7,10 @@
 //
 
 #import "KEYViewController.h"
-#import <KeyReply/KeyReply-umbrella.h>
+#import "KeyReply/KEYKeyReplyView.h"
 
 @interface KEYViewController ()
+@property (nonatomic, weak) IBOutlet KEYKeyReplyView * tabChatView;
 @property (nonatomic, weak) IBOutlet KEYKeyReplyView * chatView;
 @end
 
@@ -18,11 +19,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
+    
     [self.chatView enableDebugMode];
     [self.chatView reload];
+    [self.tabChatView enableDebugMode];
+    [self.tabChatView reload];
+    NSMutableDictionary * userDict = [[NSMutableDictionary alloc] init];
+    [userDict setValue:@"bot1" forKey:@"name"];
+    [userDict setValue:@"token" forKey:@"JWT"];
+    [self.chatView setUserSetting:userDict];
+    [[self view] bringSubviewToFront:self.chatView];
 }
-
 
 #pragma mark - Helper
 
@@ -41,20 +48,17 @@
 - (IBAction)onBtnDevelopment:(id)sender
 {
     [self.chatView enableDebugMode];
-    [self.chatView reload];
 }
 
 - (IBAction)onBtnStaging:(id)sender
 {
     [self.chatView enableStagingMode];
-    [self.chatView reload];
 }
 
 - (IBAction)onBtnProduction:(id)sender
 {
     //Default
     [self.chatView enableProductionMode];
-    [self.chatView reload];
 }
 
 - (IBAction)onBtnOpen:(id)sender
