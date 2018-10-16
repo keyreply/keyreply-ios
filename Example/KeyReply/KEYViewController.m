@@ -20,8 +20,11 @@
 {
     [super viewDidLoad];
     
+    [self.chatView setDevUrl:@"https://keyreply.blob.core.windows.net/webchat/static/index.html?manualstart=true"];
+    [self.chatView setServerSetting:@"https://keyreply-platform-demo-bot.azurewebsites.net"];
     [self.chatView enableDebugMode];
     [self.chatView reload];
+    
     [self.tabChatView enableDebugMode];
     [self.tabChatView reload];
     NSMutableDictionary * userDict = [[NSMutableDictionary alloc] init];

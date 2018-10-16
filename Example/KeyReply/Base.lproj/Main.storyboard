@@ -37,23 +37,8 @@
                                     <action selector="onBtnActions:" destination="whP-gf-Uak" eventType="touchUpInside" id="1yS-TW-0aH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TKX-LN-xv2">
-                                <rect key="frame" x="289" y="67" width="86" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.12136182600000001" green="0.34773543480000002" blue="0.94533164830000005" alpha="0.082012287619999999" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Navigate">
-                                    <color key="titleColor" red="0.1916168811" green="0.34773543480000002" blue="0.71040409739999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="onBtnActions:" destination="whP-gf-Uak" eventType="touchUpInside" id="6Zz-8x-lYI"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tA1-dp-q4N">
-                                <rect key="frame" x="1" y="67" width="91" height="45"/>
+                                <rect key="frame" x="1" y="67" width="133" height="45"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.89694404602050781" green="0.34773543477058411" blue="0.20458301901817322" alpha="0.082012287621359217" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -113,7 +98,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qWQ-QB-zdY">
-                                <rect key="frame" x="94" y="67" width="91" height="45"/>
+                                <rect key="frame" x="142" y="67" width="118" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.89694404599999999" green="0.34773543480000002" blue="0.204583019" alpha="0.082012287619999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -128,7 +113,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fSR-Kv-bPm">
-                                <rect key="frame" x="189" y="67" width="91" height="45"/>
+                                <rect key="frame" x="268" y="67" width="107" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.89694404599999999" green="0.34773543480000002" blue="0.204583019" alpha="0.082012287619999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>

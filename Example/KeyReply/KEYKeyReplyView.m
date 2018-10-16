@@ -9,9 +9,6 @@
 #import <WebKit/WebKit.h>
 #import "KEYKeyReplyView.h"
 
-#define DEFAULT_PRODUCTION_URL                  @"https://keyreply.blob.core.windows.net/webchat/static/index.html"
-#define DEFAULT_STAGING_URL                     @"https://rightfrom.us/temp/keyreply/"
-#define DEFAULT_DEV_URL                         @"https://files.keyreply.com/demo/index.html"
 #define CUSTOM_USER_AGENT               @"KeyReplyiOSSDK"
 
 #define SDK_URL_SCHEME                  @"keyreplysdk://"
@@ -72,7 +69,6 @@
     self.aAutoOpenOnStart = YES;
     self.backgroundColor = [UIColor clearColor];
     //Default to production mode
-    self.webViewUrl = DEFAULT_PRODUCTION_URL;
     
     NSString * jScript =
     @"var meta = document.createElement('meta'); " \
@@ -122,13 +118,19 @@
 -(void)changeUrlSettings:(NSString*)env {
     NSString * url;
     if([env isEqualToString:@"prod"]) {
-        url = self.PRODUCTION_URL.length!=0 ? self.PRODUCTION_URL:DEFAULT_PRODUCTION_URL;
+        url = self.PRODUCTION_URL;
     } else if([env isEqualToString:@"stage"]) {
-        url = self.STAGING_URL.length!=0 ? self.STAGING_URL:DEFAULT_STAGING_URL;
+        url = self.STAGING_URL;
     } else {
-        url = self.DEV_URL.length!=0 ? self.DEV_URL:DEFAULT_DEV_URL;
+        url = self.DEV_URL;
     }
-    
+    if(url == nil) {
+        NSException *e = [NSException
+                          exceptionWithName:@"EnvURLNotFoundException"
+                          reason:@"EnvURL Not Found on System, Set a ENV(Production,Staging,Dev) Url and enable the mode to run."
+                          userInfo:nil];
+        @throw e;
+    }
     self.webViewUrl = url;
 }
 
@@ -254,6 +256,13 @@
 }
 
 -(void) initiateWebChat {
+    if(self.settingDict[@"server"] == nil) {
+        NSException *e = [NSException
+                          exceptionWithName:@"ServerSettingNotFoundException"
+                          reason:@"ServerSetting Not Found on System"
+                          userInfo:nil];
+        @throw e;
+    }
     NSString * payloadJsonString = [self convertDictionaryToString:self.settingDict];
     [self performKeyReplyAction:ACTION_INITIALIZE parameter:payloadJsonString completionHandler:^(id _Nullable results, NSError * _Nullable error) {
         
@@ -384,9 +393,10 @@
 {
 //    BOOL isMainLoad = [webView.URL.absoluteString isEqualToString:self.webViewUrl];
 //    if (isMainLoad && self.aAutoOpenOnStart)
-    if (self.aAutoOpenOnStart)
+    if (self.aAutoOpenOnStart) {
         [self initiateWebChat];
         [self openChatWindow];
+    }
 }
 
 - (void)handleNagivationError:(NSError *)error
