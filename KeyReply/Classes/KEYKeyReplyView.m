@@ -12,6 +12,7 @@
 #define CUSTOM_USER_AGENT               @"KeyReplyiOSSDK"
 
 #define SDK_URL_SCHEME                  @"keyreplysdk://"
+#define DEFAULT_ENV_URL                 @"https://preview.keyreply.com"
 
 #define ACTION_OPEN_CHAT_WINDOW         @"OPEN_CHAT_WINDOW"
 #define ACTION_CLOSE_CHAT_WINDOW        @"CLOSE_CHAT_WINDOW"
@@ -26,9 +27,6 @@
 @interface KEYKeyReplyView() <WKNavigationDelegate, WKScriptMessageHandler, WKUIDelegate>
 @property (nonatomic, strong) WKWebView * webView;
 @property (nonatomic, copy) NSString * webViewUrl;
-@property (nonatomic, copy) NSString * PRODUCTION_URL;
-@property (nonatomic, copy) NSString * STAGING_URL;
-@property (nonatomic, copy) NSString * DEV_URL;
 @property (nonatomic, assign) BOOL debugMode;
 @property (nonatomic, assign) BOOL aAutoOpenOnStart;
 @property (nonatomic, strong) NSMutableDictionary * settingDict;
@@ -68,8 +66,8 @@
     self.debugMode = NO;
     self.aAutoOpenOnStart = YES;
     self.backgroundColor = [UIColor clearColor];
-    //Default to production mode
-    
+    //Default env_url
+    self.webViewUrl = DEFAULT_ENV_URL;
     NSString * jScript =
     @"var meta = document.createElement('meta'); " \
     "meta.setAttribute( 'name', 'viewport' ); " \
@@ -106,52 +104,8 @@
 
 #pragma mark - Public Settings
 
--(void) setProductionUrl:(NSString*)url {
-    self.PRODUCTION_URL = url;
-}
--(void) setStagingUrl:(NSString*)url {
-    self.STAGING_URL = url;
-}
--(void) setDevUrl:(NSString*)url {
-    self.DEV_URL = url;
-}
--(void)changeUrlSettings:(NSString*)env {
-    NSString * url;
-    if([env isEqualToString:@"prod"]) {
-        url = self.PRODUCTION_URL;
-    } else if([env isEqualToString:@"stage"]) {
-        url = self.STAGING_URL;
-    } else {
-        url = self.DEV_URL;
-    }
-    if(url == nil) {
-        NSException *e = [NSException
-                          exceptionWithName:@"EnvURLNotFoundException"
-                          reason:@"EnvURL Not Found on System, Set a ENV(Production,Staging,Dev) Url and enable the mode to run."
-                          userInfo:nil];
-        @throw e;
-    }
+-(void) setEnvUrl:(NSString*)url {
     self.webViewUrl = url;
-}
-
-- (void)enableDebugMode
-{
-    self.debugMode = YES;
-    [self changeUrlSettings:@"dev"];
-    [self reload];
-}
-- (void)enableStagingMode
-{
-    self.debugMode = YES;
-    [self changeUrlSettings:@"stage"];
-    [self reload];
-    
-}
-- (void)enableProductionMode
-{
-    self.debugMode = NO;
-    [self changeUrlSettings:@"prod"];
-    [self reload];
 }
 
 - (void)setAutoOpenOnStart:(BOOL)enabled
@@ -164,9 +118,9 @@
     return self.aAutoOpenOnStart;
 }
 
-- (void)setServerSetting:(NSString*)serverSetting
+- (void)setServerSetting:(NSString*)url
 {
-    [self initServerObject:serverSetting];
+    [self.settingDict setObject:url forKey:@"server"];
 }
 
 - (NSString *)serverSetting
@@ -174,9 +128,9 @@
     return self.settingDict[@"server"];
 }
 
-- (void)setUserSetting:(NSMutableDictionary*)userSetting
+- (void)setUserSetting:(NSMutableDictionary*)user
 {
-    [self initUserObject:userSetting];
+    [self.settingDict setObject:user forKey:@"user"];
 }
 
 - (NSMutableDictionary *)userSetting
@@ -244,15 +198,6 @@
         if (completionHandler)
             completionHandler(resultString);
     }];
-}
-
-- (void) initServerObject:(NSString*)URL {
-    [self.settingDict setObject:URL forKey:@"server"];
-}
-
-// user = {'name':'MAX', 'JWT':'token'}
-- (void) initUserObject:(NSDictionary*)user {
-    [self.settingDict setObject:user forKey:@"user"];
 }
 
 -(void) initiateWebChat {

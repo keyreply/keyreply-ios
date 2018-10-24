@@ -11,9 +11,6 @@
 @interface KEYKeyReplyView : UIView
 
 - (void)reload;
-- (void)enableDebugMode;
-- (void)enableStagingMode;
-- (void)enableProductionMode;
 - (void)setAutoOpenOnStart:(BOOL)enabled;
 - (BOOL)autoOpenOnStart;
 
@@ -27,7 +24,5 @@
 - (void)toggleChatWindow;
 - (void)availableActions:(void (^ _Nullable)(NSString * _Nonnull actions))completionHandler;
 - (void)sendMessage:(NSString * _Nonnull)message;
-- (void)setProductionUrl:(NSString*)url;
-- (void)setStagingUrl:(NSString*)url;
-- (void)setDevUrl:(NSString*)url;
+- (void)setEnvUrl:(NSString*)url;
 @end

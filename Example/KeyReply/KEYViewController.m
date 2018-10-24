@@ -19,14 +19,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self.chatView setDevUrl:@"https://keyreply.blob.core.windows.net/webchat/static/index.html?manualstart=true"];
     [self.chatView setServerSetting:@"https://keyreply-platform-demo-bot.azurewebsites.net"];
-    [self.chatView enableDebugMode];
     [self.chatView reload];
     
-    [self.tabChatView enableDebugMode];
+    [self.tabChatView setServerSetting:@"https://keyreply-platform-demo-bot.azurewebsites.net"];
     [self.tabChatView reload];
+    
     NSMutableDictionary * userDict = [[NSMutableDictionary alloc] init];
     [userDict setValue:@"bot1" forKey:@"name"];
     [userDict setValue:@"token" forKey:@"JWT"];
@@ -47,22 +45,6 @@
 
 
 #pragma mark - Actions
-
-- (IBAction)onBtnDevelopment:(id)sender
-{
-    [self.chatView enableDebugMode];
-}
-
-- (IBAction)onBtnStaging:(id)sender
-{
-    [self.chatView enableStagingMode];
-}
-
-- (IBAction)onBtnProduction:(id)sender
-{
-    //Default
-    [self.chatView enableProductionMode];
-}
 
 - (IBAction)onBtnOpen:(id)sender
 {

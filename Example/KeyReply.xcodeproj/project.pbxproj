@@ -24,7 +24,6 @@
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		7AA6EA43D35758572DCD6721 /* Pods_KeyReply_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D528862E29508098859579E /* Pods_KeyReply_Example.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		D63D57952175E017000658BB /* KEYKeyReplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = D63D57932175E017000658BB /* KEYKeyReplyView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,8 +65,6 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A99F22B2E1C7C667C4D89C01 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		D63D57932175E017000658BB /* KEYKeyReplyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = KEYKeyReplyView.m; path = "/Users/jeremypek/devwork/keyreply/keyreply-ios/Example/KeyReply/KEYKeyReplyView.m"; sourceTree = "<absolute>"; };
-		D63D57942175E017000658BB /* KEYKeyReplyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = KEYKeyReplyView.h; path = "/Users/jeremypek/devwork/keyreply/keyreply-ios/Example/KeyReply/KEYKeyReplyView.h"; sourceTree = "<absolute>"; };
 		E1C7E060EFB1EB8910078E32 /* Pods-KeyReply_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyReply_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyReply_Example/Pods-KeyReply_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FD339C48A4DFA0B281F949B6 /* Pods-KeyReply_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyReply_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyReply_Tests/Pods-KeyReply_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,8 +143,6 @@
 		6003F593195388D20070C39A /* Example for KeyReply */ = {
 			isa = PBXGroup;
 			children = (
-				D63D57942175E017000658BB /* KEYKeyReplyView.h */,
-				D63D57932175E017000658BB /* KEYKeyReplyView.m */,
 				6003F59C195388D20070C39A /* KEYAppDelegate.h */,
 				6003F59D195388D20070C39A /* KEYAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -212,7 +207,7 @@
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
-				4D5168E56C2598534A289AF4 /* [CP] Embed Pods Frameworks */,
+				DD1F0DEBCDD3C4EC9DA52212 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -304,28 +299,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4D5168E56C2598534A289AF4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-KeyReply_Example/Pods-KeyReply_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/KeyReply/KeyReply.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeyReply.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyReply_Example/Pods-KeyReply_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6F7FE3D53238EB4177F929CE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -368,6 +341,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DD1F0DEBCDD3C4EC9DA52212 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-KeyReply_Example/Pods-KeyReply_Example-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/KeyReply/KeyReply.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeyReply.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyReply_Example/Pods-KeyReply_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		E6ED173D0E033C1FBA4020E1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -394,7 +389,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* KEYAppDelegate.m in Sources */,
-				D63D57952175E017000658BB /* KEYKeyReplyView.m in Sources */,
 				6003F5A7195388D20070C39A /* KEYViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
