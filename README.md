@@ -75,6 +75,10 @@ All customization of appearance are to be done via KeyReply's web console.
 
 `[keyReplyView setServerSetting:@"SERVER_URL"];`
 
+### Setting env url (webview url)
+
+`[keyReplyView setEnvUrl:@"ENV_URL"];` 
+
 ### Setting user settings
 User settings must be of type  `NSMutableDictionary` . For example: 
 
