@@ -1,37 +1,43 @@
 PODS:
+  - Crashlytics (3.10.8):
+    - Fabric (~> 1.7.12)
   - Expecta (1.0.6)
   - "Expecta+Snapshots (3.1.1)":
     - Expecta (~> 1.0)
     - FBSnapshotTestCase/Core (~> 2.0)
     - Specta (~> 1.0)
+  - Fabric (1.7.12)
   - FBSnapshotTestCase/Core (2.1.4)
   - KeyReply (0.0.9)
   - Specta (1.0.7)
 
 DEPENDENCIES:
+  - Crashlytics
   - Expecta
   - "Expecta+Snapshots"
-  - KeyReply (from `../`)
+  - Fabric
+  - KeyReply
   - Specta
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Crashlytics
     - Expecta
     - "Expecta+Snapshots"
+    - Fabric
     - FBSnapshotTestCase
+    - KeyReply
     - Specta
 
-EXTERNAL SOURCES:
-  KeyReply:
-    :path: "../"
-
 SPEC CHECKSUMS:
+  Crashlytics: 058dc1ba579f6c100bc60a6878703779bff383c4
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   "Expecta+Snapshots": dcff217eef506dabd6dfdc7864ea2da321fafbb8
+  Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  KeyReply: 6864bc7b175215cf39f39e0d84cf231f9ae66c99
+  KeyReply: ad3c4ba3ada4f37a2f7084c06ecb28b8602fe8d5
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
-PODFILE CHECKSUM: 3b52e64f455706e3977e42dc98940b0464bcd38a
+PODFILE CHECKSUM: 9aef71164aa8906c7b073fcfbf4b7e08f6a917ca
 
 COCOAPODS: 1.5.3
