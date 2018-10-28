@@ -1,6 +1,6 @@
 {
   "name": "KeyReply",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "summary": "KeyReply SDK for iOS",
   "description": "KeyReply is your top choice for chatbots: We have worked with top governments and enterprises in Singapore and Asia.",
   "homepage": "https://github.com/keyreply/keyreply-ios",
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/keyreply/keyreply-ios.git",
-    "tag": "0.0.9"
+    "tag": "0.0.10"
   },
   "platforms": {
     "ios": "8.0"

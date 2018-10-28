@@ -1,43 +1,43 @@
 PODS:
-  - Crashlytics (3.10.8):
-    - Fabric (~> 1.7.12)
   - Expecta (1.0.6)
   - "Expecta+Snapshots (3.1.1)":
     - Expecta (~> 1.0)
     - FBSnapshotTestCase/Core (~> 2.0)
     - Specta (~> 1.0)
-  - Fabric (1.7.12)
   - FBSnapshotTestCase/Core (2.1.4)
-  - KeyReply (0.0.9)
+  - HockeySDK (5.1.2):
+    - HockeySDK/DefaultLib (= 5.1.2)
+  - HockeySDK/DefaultLib (5.1.2)
+  - KeyReply (0.0.10)
   - Specta (1.0.7)
 
 DEPENDENCIES:
-  - Crashlytics
   - Expecta
   - "Expecta+Snapshots"
-  - Fabric
-  - KeyReply
+  - HockeySDK
+  - KeyReply (from `../`)
   - Specta
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Crashlytics
     - Expecta
     - "Expecta+Snapshots"
-    - Fabric
     - FBSnapshotTestCase
-    - KeyReply
+    - HockeySDK
     - Specta
 
+EXTERNAL SOURCES:
+  KeyReply:
+    :path: "../"
+
 SPEC CHECKSUMS:
-  Crashlytics: 058dc1ba579f6c100bc60a6878703779bff383c4
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   "Expecta+Snapshots": dcff217eef506dabd6dfdc7864ea2da321fafbb8
-  Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  KeyReply: ad3c4ba3ada4f37a2f7084c06ecb28b8602fe8d5
+  HockeySDK: 38b7e2726af1ea86ae97ce4b5de33ab0817e3500
+  KeyReply: 2546d6b12f59080bac2374d359cbf7aad97b274b
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
-PODFILE CHECKSUM: 9aef71164aa8906c7b073fcfbf4b7e08f6a917ca
+PODFILE CHECKSUM: ee4633af5bf4c9e9ee3ea8390600151f0418b024
 
 COCOAPODS: 1.5.3
