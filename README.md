@@ -88,6 +88,25 @@ NSMutableDictionary * userDict = [[NSMutableDictionary alloc] init];
 [userDict setValue:@"123" forKey:@"id"];
 [keyReplyView setUserSetting:(NSMutableDictionary)];
 ```
+### Setting Resize Function
+
+Have a selector function ready, copy and change the frame parameters accordingly:
+```
+- (void)chatWindowResize:(NSString *)toggle{
+    if([toggle isEqualToString:@"true"]) {
+        self.chatView.frame = self.chatViewFrame;
+    }else {
+        CGRect newFrame = CGRectMake(x,y,width,height);
+        self.chatView.frame = newFrame;
+    }
+}
+```
+
+call this method in viewDidLoad method, like so:
+```
+[self.chatView setChatWindowResizeFunc:@selector(chatWindowResize:) fromObject:self];
+```
+
 
 ### Expand/Collapse/Toggle chat window
 
