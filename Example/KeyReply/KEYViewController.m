@@ -12,6 +12,7 @@
 @interface KEYViewController ()
 @property (nonatomic, weak) IBOutlet KEYKeyReplyView * tabChatView;
 @property (nonatomic, weak) IBOutlet KEYKeyReplyView * chatView;
+@property (nonatomic, assign) CGRect chatViewFrame;
 @end
 
 @implementation KEYViewController
@@ -21,7 +22,7 @@
     [super viewDidLoad];
     [self.chatView setServerSetting:@"https://keyreply-platform-demo-bot.azurewebsites.net"];
     [self.chatView reload];
-    
+    [self.tabChatView setEnvUrl:@"https://rightfrom.us/temp/keyreply/"];
     [self.tabChatView setServerSetting:@"https://keyreply-platform-demo-bot.azurewebsites.net"];
     [self.tabChatView reload];
     
@@ -30,6 +31,8 @@
     [userDict setValue:@"token" forKey:@"JWT"];
     [self.chatView setUserSetting:userDict];
     [[self view] bringSubviewToFront:self.chatView];
+    [self.chatView setChatWindowResizeFunc:@selector(resize:) fromObject:self];
+    self.chatViewFrame = self.chatView.frame;
 }
 
 #pragma mark - Helper
@@ -37,15 +40,22 @@
 - (void)showAlertWithTitle:(NSString *)title message:(NSString *)message
 {
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle:title
-                                                                              message:message
-                                                                       preferredStyle:UIAlertControllerStyleAlert];
+        message:message
+        preferredStyle:UIAlertControllerStyleAlert];
     [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
 
 #pragma mark - Actions
-
+- (void)resize:(NSString *)toggle{
+    if([toggle isEqualToString:@"true"]) {
+        self.chatView.frame = self.chatViewFrame;
+    }else {
+        CGRect newFrame = CGRectMake(310,597,65,70);
+        self.chatView.frame = newFrame;
+    }
+}
 - (IBAction)onBtnOpen:(id)sender
 {
     [self.chatView openChatWindow];
