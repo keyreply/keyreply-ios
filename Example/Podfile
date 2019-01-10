@@ -5,8 +5,7 @@ use_frameworks!
 platform :ios, '8.0'
 
 target 'KeyReply_Example' do
-  pod 'KeyReply', :path => "../"
-  pod "HockeySDK"
+  #pod 'KeyReply', :path => "../"
 
   target 'KeyReply_Tests' do
     inherit! :search_paths
