@@ -21,9 +21,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.chatView setEnvUrl:@"http://localhost:8081"];
-//    [self.chatView setServerSetting:@"https://keyreply-platform-demo-bot.azurewebsites.net"];
-    [self.chatView setServerSetting:@"http://localhost:3000"];
+//    [self.chatView setEnvUrl:@"http://localhost:8081"];
+    [self.chatView setServerSetting:@"https://keyreply-aia-uat.azurewebsites.net"];
+//    [self.chatView setServerSetting:@"http://localhost:3000"];
     [self.chatView reload];
     [self.tabChatView setEnvUrl:@"https://rightfrom.us/temp/keyreply/"];
     [self.tabChatView setServerSetting:@"https://keyreply-platform-demo-bot.azurewebsites.net"];

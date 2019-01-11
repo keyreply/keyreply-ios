@@ -97,6 +97,43 @@ NSMutableDictionary * userDict = [[NSMutableDictionary alloc] init];
 [keyReplyView toggleChatWindow];
 ```
 
+### Setting Resize Function
+
+Have a selector function ready, copy and change the frame parameters accordingly:
+
+```objective-c
+- (void)chatWindowResize:(NSString *)toggle{
+    if([toggle isEqualToString:@"true"]) {
+        self.chatView.frame = self.chatViewFrame;
+    }else {
+        CGRect newFrame = CGRectMake(x,y,width,height);
+        self.chatView.frame = newFrame;
+    }
+}
+```
+call this method in viewDidLoad method, like so:
+
+```
+[self.chatView setChatWindowResizeFunc:@selector(chatWindowResize:) fromObject:self];
+```
+
+**This function will be called inside openChatWindow and closeChatWindow functions**
+
+### Setting Generate JWT Function
+
+```
+[self.chatView setGenerateJWTFunc:@selector(generateJWTFunc:) fromObject:self];
+```
+**This function will be called when JWT token passed in is invalid**
+
+### initialize with JWT
+Take in JWT token as a `NSSTRING`.
+
+```
+[keyReplyView setInitWithJWT:(JWTToken)];
+```
+
+
 ### Send a chat message programmatically
 Chat message can be sent via KeyReplySDK UI or done programmatically as followed:
 

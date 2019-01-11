@@ -103,7 +103,7 @@
 
 - (void)reload
 {
-    [self loadUrl:self.webViewUrl];
+    [self loadUrl:[self.webViewUrl stringByAppendingString:@"/?manual=true"]];
 }
 
 #pragma mark - Public Settings
@@ -301,7 +301,7 @@
     }else {
         NSString * payloadJsonString = [self convertDictionaryToString:self.settingDict];
         [self performKeyReplyAction:ACTION_INITIALIZE parameter:payloadJsonString completionHandler:^(id _Nullable results, NSError * _Nullable error) {
-            
+            NSLog(@"Init error:\n%@", error);
         }];
     }
     
@@ -437,8 +437,8 @@
 {
     //    BOOL isMainLoad = [webView.URL.absoluteString isEqualToString:self.webViewUrl];
     //    if (isMainLoad && self.aAutoOpenOnStart)
-    if (self.aAutoOpenOnStart) {
         [self initiateWebChat];
+    if (self.aAutoOpenOnStart) {
         [self openChatWindow];
     }
 }
