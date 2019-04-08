@@ -82,7 +82,7 @@ All customization of appearance are to be done via KeyReply's web console.
 ### Setting user settings
 User settings must be of type  `NSMutableDictionary` . For example: 
 
-```
+```objective-c
 NSMutableDictionary * userDict = [[NSMutableDictionary alloc] init];
 [userDict setValue:@"bot1" forKey:@"name"];
 [userDict setValue:@"123" forKey:@"id"];
@@ -113,7 +113,7 @@ Have a selector function ready, copy and change the frame parameters accordingly
 ```
 call this method in viewDidLoad method, like so:
 
-```
+```objective-c
 [self.chatView setChatWindowResizeFunc:@selector(chatWindowResize:) fromObject:self];
 ```
 
@@ -121,7 +121,7 @@ call this method in viewDidLoad method, like so:
 
 ### Setting Generate JWT Function
 
-```
+```objective-c
 [self.chatView setGenerateJWTFunc:@selector(generateJWTFunc:) fromObject:self];
 ```
 **This function will be called when JWT token passed in is invalid**
@@ -129,7 +129,7 @@ call this method in viewDidLoad method, like so:
 ### initialize with JWT
 Take in JWT token as a `NSSTRING`.
 
-```
+```objective-c
 [keyReplyView setInitWithJWT:(JWTToken)];
 ```
 
