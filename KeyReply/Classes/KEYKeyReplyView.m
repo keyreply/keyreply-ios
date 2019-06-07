@@ -12,7 +12,7 @@
 #define CUSTOM_USER_AGENT               @"KeyReplyiOSSDK"
 
 #define SDK_URL_SCHEME                  @"keyreplysdk://"
-#define DEFAULT_ENV_URL                 @"https://preview.keyreply.com"
+#define DEFAULT_ENV_URL                 @"https://mobile.keyreply.com"
 
 #define ACTION_OPEN_CHAT_WINDOW         @"OPEN_CHAT_WINDOW"
 #define ACTION_CLOSE_CHAT_WINDOW        @"CLOSE_CHAT_WINDOW"

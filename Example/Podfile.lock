@@ -5,11 +5,13 @@ PODS:
     - FBSnapshotTestCase/Core (~> 2.0)
     - Specta (~> 1.0)
   - FBSnapshotTestCase/Core (2.1.4)
+  - KeyReply (0.0.12)
   - Specta (1.0.7)
 
 DEPENDENCIES:
   - Expecta
   - "Expecta+Snapshots"
+  - KeyReply (from `../`)
   - Specta
 
 SPEC REPOS:
@@ -19,12 +21,17 @@ SPEC REPOS:
     - FBSnapshotTestCase
     - Specta
 
+EXTERNAL SOURCES:
+  KeyReply:
+    :path: "../"
+
 SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   "Expecta+Snapshots": dcff217eef506dabd6dfdc7864ea2da321fafbb8
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  KeyReply: 361b9275dbecc8a1afba71e469e46440b89bf3da
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
-PODFILE CHECKSUM: 229e131d0988494198f028f84a1ae8441b9fa78e
+PODFILE CHECKSUM: f8d009a4fbeb49d6dab05c72238573cd91101998
 
 COCOAPODS: 1.5.3

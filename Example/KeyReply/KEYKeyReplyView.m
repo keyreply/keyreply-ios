@@ -12,7 +12,7 @@
 #define CUSTOM_USER_AGENT               @"KeyReplyiOSSDK"
 
 #define SDK_URL_SCHEME                  @"keyreplysdk://"
-#define DEFAULT_ENV_URL                 @"https://preview.keyreply.com"
+#define DEFAULT_ENV_URL                 @"https://mobile.keyreply.com/"
 
 #define ACTION_OPEN_CHAT_WINDOW         @"OPEN_CHAT_WINDOW"
 #define ACTION_CLOSE_CHAT_WINDOW        @"CLOSE_CHAT_WINDOW"
@@ -68,7 +68,7 @@
 {
     self.debugMode = NO;
     self.aAutoOpenOnStart = NO;
-    self.backgroundColor = [UIColor clearColor];
+//    self.backgroundColor = [UIColor clearColor];
     //Default env_url
     self.webViewUrl = DEFAULT_ENV_URL;
     NSString * jScript =
@@ -84,13 +84,13 @@
     wkWebConfig.userContentController = wkUserController;
     
     WKWebView * webView = [[WKWebView alloc] initWithFrame:self.bounds configuration:wkWebConfig];
-    webView.backgroundColor = [UIColor clearColor];
+//    webView.backgroundColor = [UIColor clearColor];
     webView.opaque = NO;
     webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     webView.clipsToBounds = NO;
     webView.navigationDelegate = self;
     webView.UIDelegate = self;
-    webView.scrollView.backgroundColor = [UIColor clearColor];
+//    webView.scrollView.backgroundColor = [UIColor clearColor];
     webView.scrollView.showsVerticalScrollIndicator = NO;
     webView.scrollView.showsHorizontalScrollIndicator = NO;
     if (@available(iOS 9.0, *))
@@ -297,7 +297,7 @@
     NSString* token = [userDict valueForKey:@"JWT"];
     
     if(token != nil && ![self verifyJWT]) {
-        [self generateJWT]; // async method which will complete and call setInitWithJWT
+        [self generateJWT]; // async method which will complete and call 
     }else {
         NSString * payloadJsonString = [self convertDictionaryToString:self.settingDict];
         [self performKeyReplyAction:ACTION_INITIALIZE parameter:payloadJsonString completionHandler:^(id _Nullable results, NSError * _Nullable error) {
@@ -339,7 +339,6 @@
 
 
 #pragma mark - Interface to SDK
-
 - (void)evaluateJavaScript:(NSString *)javaScriptString completionHandler:(void (^ _Nullable)(_Nullable id results, NSError * _Nullable error))completionHandler
 {
     if (self.debugMode)

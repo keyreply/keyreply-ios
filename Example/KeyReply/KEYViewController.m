@@ -7,8 +7,8 @@
 //
 
 #import "KEYViewController.h"
+//#import "KeyReply/KEYKeyReplyView.h"
 #import "KEYKeyReplyView.h"
-
 
 @interface KEYViewController ()
 @property (nonatomic, weak) IBOutlet KEYKeyReplyView * tabChatView;
@@ -22,7 +22,10 @@
 {
     [super viewDidLoad];
 //    [self.chatView setEnvUrl:@"http://localhost:8081"];
-    [self.chatView setServerSetting:@"https://keyreply-aia-uat.azurewebsites.net"];
+//    [self.chatView setEnvUrl:@"https://webchat.keyreply.com"];
+//    [self.chatView setEnvUrl:@"https://mobile.keyreply.com"];
+    [self.chatView setServerSetting:@"https://keyreply-aia.azurewebsites.net"];
+//    [self.chatView setServerSetting:@"https://keyreply-platform-demo-bot.azurewebsites.net"];
 //    [self.chatView setServerSetting:@"http://localhost:3000"];
     [self.chatView reload];
     [self.tabChatView setEnvUrl:@"https://rightfrom.us/temp/keyreply/"];
@@ -35,6 +38,8 @@
     [[self view] bringSubviewToFront:self.chatView];
     [self.chatView setChatWindowResizeFunc:@selector(resize:) fromObject:self];
     self.chatViewFrame = self.chatView.frame;
+    CGRect newFrame = CGRectMake(1240,894,125,130);
+    self.chatView.frame = newFrame;
 }
 
 #pragma mark - Helper
@@ -52,10 +57,25 @@
 #pragma mark - Actions
 - (void)resize:(NSString *)toggle{
     if([toggle isEqualToString:@"true"]) {
-        self.chatView.frame = self.chatViewFrame;
+        self.chatView.hidden = true;
+        
+        [UIView animateWithDuration:0 delay:0.1 options:UIViewAnimationOptionShowHideTransitionViews animations:^{
+            self.chatView.frame = self.chatViewFrame;
+        } completion:^(BOOL finished){
+            self.chatView.hidden = false;
+        }];
     }else {
-        CGRect newFrame = CGRectMake(1240,894,125,130);
-        self.chatView.frame = newFrame;
+        self.chatView.hidden = true;
+        
+        [UIView animateWithDuration:0 delay:0.3 options:UIViewAnimationOptionShowHideTransitionViews animations:^{
+            CGRect newFrame = CGRectMake(1240,894,125,130);
+            self.chatView.frame = newFrame;
+        } completion:^(BOOL finished){
+
+            self.chatView.hidden = false;
+        }];
+//        CGRect newFrame = CGRectMake(1240,894,125,130);
+//        self.chatView.frame = newFrame;
     }
 }
 - (IBAction)onBtnOpen:(id)sender
