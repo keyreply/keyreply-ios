@@ -22,10 +22,8 @@
 {
     [super viewDidLoad];
 //    [self.chatView setEnvUrl:@"http://localhost:8081"];
-//    [self.chatView setEnvUrl:@"https://webchat.keyreply.com"];
-//    [self.chatView setEnvUrl:@"https://mobile.keyreply.com"];
-    [self.chatView setServerSetting:@"https://keyreply-aia.azurewebsites.net"];
-//    [self.chatView setServerSetting:@"https://keyreply-platform-demo-bot.azurewebsites.net"];
+        [self.chatView setEnvUrl:@"https://mobile.keyreply.com"];
+    [self.chatView setServerSetting:@"https://demo-01.app.keyreply.com/server/"];
 //    [self.chatView setServerSetting:@"http://localhost:3000"];
     [self.chatView reload];
     [self.tabChatView setEnvUrl:@"https://rightfrom.us/temp/keyreply/"];

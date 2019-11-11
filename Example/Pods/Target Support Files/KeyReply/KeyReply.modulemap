@@ -1,6 +1,0 @@
-framework module KeyReply {
-  umbrella header "KeyReply-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -414,11 +414,19 @@
     //Handle special keyreplysdk:// url
     BOOL sdkCallback = [absUrl hasPrefix:SDK_URL_SCHEME];
     if (sdkCallback) {
+        BOOL sdkCallbackNewTab = [absUrl containsString:@"tab"];
+        if(sdkCallbackNewTab) {
+            NSArray *items =[absUrl componentsSeparatedByString:@"tab="];;
+            NSString *urlString = [items objectAtIndex:1];
+            NSURL* url =[NSURL URLWithString:urlString];
+            [[UIApplication sharedApplication] openURL:url];
+            decisionHandler(WKNavigationActionPolicyCancel);
+            return;
+        }
         [self handleSDKcallback:navigationAction.request.URL];
         decisionHandler(WKNavigationActionPolicyCancel);
         return;
     }
-    
     decisionHandler(WKNavigationActionPolicyAllow);
 }
 
