@@ -19,12 +19,18 @@
 @implementation KEYViewController
 
 - (void)viewDidLoad
-{
+{   
     [super viewDidLoad];
-//    [self.chatView setEnvUrl:@"http://localhost:8081"];
-        [self.chatView setEnvUrl:@"https://mobile.keyreply.com"];
-    [self.chatView setServerSetting:@"https://demo-01.app.keyreply.com/server/"];
-//    [self.chatView setServerSetting:@"http://localhost:3000"];
+    NSMutableDictionary * generator = [[NSMutableDictionary alloc] init];
+    [generator setValue:@"http://localhost:3000/api/authorize_webchat" forKey:@"url"];
+    [generator setValue:@"POST" forKey:@"method"];
+    [generator setValue:@"data.access_token" forKey:@"accessTokenPath"];
+    [self.chatView setTokenGeneratorSetting:generator];
+    
+    [self.chatView setEnvUrl:@"http://localhost:8081"];
+//        [self.chatView setEnvUrl:@"https://mobile.keyreply.com"];
+//    [self.chatView setServerSetting:@"https://demo-01.app.keyreply.com/server/"];
+    [self.chatView setServerSetting:@"http://localhost:3000"];
     [self.chatView reload];
     [self.tabChatView setEnvUrl:@"https://rightfrom.us/temp/keyreply/"];
     [self.tabChatView setServerSetting:@"https://keyreply-platform-demo-bot.azurewebsites.net"];

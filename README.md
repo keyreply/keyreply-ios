@@ -89,6 +89,17 @@ NSMutableDictionary * userDict = [[NSMutableDictionary alloc] init];
 [keyReplyView setUserSetting:(NSMutableDictionary)];
 ```
 
+### Setting Token Generator settings
+Token generator must be of type  `NSMutableDictionary` . For example: 
+
+```objective-c
+NSMutableDictionary * generator = [[NSMutableDictionary alloc] init];
+[generator setValue:@"enpoint_for_token_generation" forKey:@"url"];
+[generator setValue:@"GET/POST" forKey:@"method"];
+[generator setValue:@"data.access_token" forKey:@"accessTokenPath"];
+[keyReplyView setTokenGeneratorSetting:generator];
+```
+
 ### Expand/Collapse/Toggle chat window
 
 ```objective-c

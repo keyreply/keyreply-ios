@@ -122,6 +122,11 @@
     return self.aAutoOpenOnStart;
 }
 
+- (void)setTokenGeneratorSetting:(NSMutableDictionary*)generator
+{
+    [self.settingDict setObject:generator forKey:@"getToken"];
+}
+
 - (void)setServerSetting:(NSString*)url
 {
     [self.settingDict setObject:url forKey:@"server"];
