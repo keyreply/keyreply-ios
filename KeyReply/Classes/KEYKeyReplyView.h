@@ -19,6 +19,7 @@
 - (void)setUserSetting:(NSMutableDictionary* _Nonnull)user;
 - (NSMutableDictionary * _Nonnull)userSetting;
 - (void)setTokenGeneratorSetting:(NSMutableDictionary* _Nonnull)generator;
+- (void)disableAppTokenDefaultGeneration;
 
 - (void)openChatWindow;
 - (void)closeChatWindow;

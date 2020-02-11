@@ -21,24 +21,24 @@
 - (void)viewDidLoad
 {   
     [super viewDidLoad];
-    NSMutableDictionary * generator = [[NSMutableDictionary alloc] init];
-    [generator setValue:@"http://localhost:3000/api/authorize_webchat" forKey:@"url"];
-    [generator setValue:@"POST" forKey:@"method"];
-    [generator setValue:@"data.access_token" forKey:@"accessTokenPath"];
-    [self.chatView setTokenGeneratorSetting:generator];
+    //        [self.chatView setEnvUrl:@"https://mobile.keyreply.com"];
+    //    [self.chatView setServerSetting:@"https://demo-01.app.keyreply.com/server/"];
     
     [self.chatView setEnvUrl:@"http://localhost:8081"];
-//        [self.chatView setEnvUrl:@"https://mobile.keyreply.com"];
-//    [self.chatView setServerSetting:@"https://demo-01.app.keyreply.com/server/"];
+    [self.chatView enableAppTokenConfiguredInSetting];
+    [self.chatView setGenerateJWTFunc:@selector(getNewToken) fromObject:self];
+
     [self.chatView setServerSetting:@"http://localhost:3000"];
+    NSMutableDictionary * userDict = [[NSMutableDictionary alloc] init];
+    [userDict setValue:@"bot1" forKey:@"name"];
+    [userDict setValue:@"assign-jwt" forKey:@"JWT"];
+    [self.chatView setUserSetting:userDict];
     [self.chatView reload];
+    
     [self.tabChatView setEnvUrl:@"https://rightfrom.us/temp/keyreply/"];
     [self.tabChatView setServerSetting:@"https://keyreply-platform-demo-bot.azurewebsites.net"];
     [self.tabChatView reload];
-    NSMutableDictionary * userDict = [[NSMutableDictionary alloc] init];
-    [userDict setValue:@"bot1" forKey:@"name"];
-//    [userDict setValue:@"token" forKey:@"JWT"];
-    [self.chatView setUserSetting:userDict];
+    
     [[self view] bringSubviewToFront:self.chatView];
     [self.chatView setChatWindowResizeFunc:@selector(resize:) fromObject:self];
     self.chatViewFrame = self.chatView.frame;
@@ -57,6 +57,11 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+- (NSString*)getNewToken;{
+//    generate the new token here
+    NSString * token = @"new token to be assign";
+    return token;
+}
 
 #pragma mark - Actions
 - (void)resize:(NSString *)toggle{

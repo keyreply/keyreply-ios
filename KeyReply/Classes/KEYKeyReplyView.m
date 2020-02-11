@@ -147,6 +147,10 @@
     return self.settingDict[@"user"];
 }
 
+- (void)disableAppTokenDefaultGeneration;
+{
+    [self.settingDict setObject:[NSNumber numberWithBool:YES] forKey:@"appTokenConfigured"];
+}
 
 
 #pragma mark - Public Interfaces
@@ -289,6 +293,17 @@
     }];
 }
 
+- (void)renewJWT
+{
+    NSString* newJWT = [self generateJWT];
+    NSDictionary * payload = @{@"jwt": newJWT};
+    NSString * tokenToSet = [self convertDictionaryToString:payload];
+    
+    [self performKeyReplyAction:@"SET_JWT_RESEND_REQUEST" parameter:tokenToSet completionHandler:^(id _Nullable results, NSError * _Nullable error) {
+        NSLog(@"renewJWT error:\n%@", error);
+    }];
+}
+
 -(void) initiateWebChat {
     if(self.settingDict[@"server"] == nil) {
         NSException *e = [NSException
@@ -398,6 +413,9 @@
         }
         if([alertString isEqualToString:@"close"]) {
             [self closeChatWindow];
+        }
+        if([alertString isEqualToString:@"jwtexpired"]) {
+            [self renewJWT];
         }
     }
     //TODO: do something with the parameters
