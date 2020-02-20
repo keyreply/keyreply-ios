@@ -122,11 +122,6 @@
     return self.aAutoOpenOnStart;
 }
 
-- (void)setTokenGeneratorSetting:(NSMutableDictionary*)generator
-{
-    [self.settingDict setObject:generator forKey:@"getToken"];
-}
-
 - (void)setServerSetting:(NSString*)url
 {
     [self.settingDict setObject:url forKey:@"server"];
@@ -147,7 +142,7 @@
     return self.settingDict[@"user"];
 }
 
-- (void)disableAppTokenDefaultGeneration;
+- (void)enableAppTokenConfiguredInSetting;
 {
     [self.settingDict setObject:[NSNumber numberWithBool:YES] forKey:@"appTokenConfigured"];
 }

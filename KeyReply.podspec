@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KeyReply'
-  s.version          = '0.0.16'
+  s.version          = '0.0.17'
   s.summary          = 'KeyReply SDK for iOS'
 
 # This description is used to generate tags and improve search results.
