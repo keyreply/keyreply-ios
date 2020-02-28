@@ -19,6 +19,7 @@
 - (void)setUserSetting:(NSMutableDictionary* _Nonnull)user;
 - (NSMutableDictionary * _Nonnull)userSetting;
 - (void)enableAppTokenConfiguredInSetting;
+- (void)renewJWT:(NSString*)newJWT;
 
 - (void)openChatWindow;
 - (void)closeChatWindow;

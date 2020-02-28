@@ -288,10 +288,9 @@
     }];
 }
 
-- (void)renewJWT
+- (void)renewJWT:(NSString *)newToken
 {
-    NSString* newJWT = [self generateJWT];
-    NSDictionary * payload = @{@"jwt": newJWT};
+    NSDictionary * payload = @{@"JWT": newToken};
     NSString * tokenToSet = [self convertDictionaryToString:payload];
     
     [self performKeyReplyAction:@"SET_JWT_RESEND_REQUEST" parameter:tokenToSet completionHandler:^(id _Nullable results, NSError * _Nullable error) {
@@ -410,7 +409,7 @@
             [self closeChatWindow];
         }
         if([alertString isEqualToString:@"jwtexpired"]) {
-            [self renewJWT];
+            [self generateJWT];
         }
     }
     //TODO: do something with the parameters

@@ -24,14 +24,16 @@
     //        [self.chatView setEnvUrl:@"https://mobile.keyreply.com"];
     //    [self.chatView setServerSetting:@"https://demo-01.app.keyreply.com/server/"];
     
-    [self.chatView setEnvUrl:@"http://localhost:8081"];
+//    [self.chatView setEnvUrl:@"http://localhost:8081"];
+    [self.chatView setEnvUrl:@"https://chattyuat.aia.com.sg/webchat/"];
+    [self.chatView setServerSetting:@"https://chattyuat.aia.com.sg/server/"];
     [self.chatView enableAppTokenConfiguredInSetting];
     [self.chatView setGenerateJWTFunc:@selector(getNewToken) fromObject:self];
 
-    [self.chatView setServerSetting:@"http://localhost:3000"];
     NSMutableDictionary * userDict = [[NSMutableDictionary alloc] init];
-    [userDict setValue:@"bot1" forKey:@"name"];
-    [userDict setValue:@"assign-jwt" forKey:@"JWT"];
+//    [userDict setValue:@"bot1" forKey:@"name"];
+//    [userDict setValue:@"assign-jwt" forKey:@"JWT"];
+    [userDict setValue:@"" forKey:@"JWT"];
     [self.chatView setUserSetting:userDict];
     [self.chatView reload];
     
@@ -60,7 +62,7 @@
 - (NSString*)getNewToken;{
 //    generate the new token here
     NSString * token = @"new token to be assign";
-    return token;
+    
 }
 
 #pragma mark - Actions
