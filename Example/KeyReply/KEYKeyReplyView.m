@@ -3,7 +3,7 @@
 //  KeyReply_Example
 //
 //  Created by Jeremy Pek on 11/10/18.
-//  Copyright © 2018 Torin Nguyen. All rights reserved.
+//  Copyright © 2020 KeyReply Pte Ltd. All rights reserved.
 //
 
 #import <WebKit/WebKit.h>
@@ -108,7 +108,7 @@
 
 #pragma mark - Public Settings
 
--(void) setEnvUrl:(NSString*)url {
+- (void)setEnvUrl:(NSString *)url {
     self.webViewUrl = url;
 }
 
@@ -149,7 +149,8 @@
 
 
 #pragma mark - Public Interfaces
--(void) clearCache {
+
+- (void)clearCache {
     WKWebsiteDataStore *dateStore = [WKWebsiteDataStore defaultDataStore];
     [dateStore fetchDataRecordsOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] completionHandler:^(NSArray<WKWebsiteDataRecord *> * __nonnull records) {
         for (WKWebsiteDataRecord *record  in records)
@@ -166,7 +167,7 @@
     }];
 }
 
--(BOOL)verifyJWT {
+- (BOOL)verifyJWT {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString* serverUrl = [self serverSetting];
     NSString* apiUrl = [serverUrl stringByAppendingString:@"/api/verify_token"];
@@ -196,7 +197,7 @@
     }
 }
 //new method >>
--(void)setInitWithJWT:(NSString*)jwttoken {
+- (void)setInitWithJWT:(NSString*)jwttoken {
     NSMutableDictionary * userDict = self.settingDict[@"user"];
     [userDict setValue:jwttoken forKey:@"JWT"];
     [self setUserSetting:userDict];
@@ -207,7 +208,7 @@
     }];
 }
 
--(NSString *)generateJWT {
+- (NSString *)generateJWT {
     if(self.generateJWTfunc) {
         return [self.parent performSelector:self.generateJWTfunc];
     }

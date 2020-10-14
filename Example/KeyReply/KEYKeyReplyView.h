@@ -3,7 +3,7 @@
 //  KeyReply
 //
 //  Created by Jeremy Pek on 11/10/18.
-//  Copyright © 2018 Torin Nguyen. All rights reserved.
+//  Copyright © 2020 KeyReply Pte Ltd. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -31,6 +31,6 @@
 - (void)setGenerateJWTFunc:(SEL)func fromObject:(id) object;
 
 //new method >>
--(void)setInitWithJWT:(NSString*)jwttoken;
+- (void)setInitWithJWT:(NSString*)jwttoken;
 
 @end

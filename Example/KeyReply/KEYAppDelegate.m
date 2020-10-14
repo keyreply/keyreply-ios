@@ -3,7 +3,7 @@
 //  KeyReply
 //
 //  Created by Torin Nguyen on 11/29/2017.
-//  Copyright (c) 2017 Torin Nguyen. All rights reserved.
+//  Copyright © 2020 KeyReply Pte Ltd. All rights reserved.
 //
 
 #import "KEYAppDelegate.h"
