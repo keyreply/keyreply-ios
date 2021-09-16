@@ -25,7 +25,7 @@ You can also add this project:
 ## Requirements
 
 * Xcode 8.0 or later
-* iOS 8.0 or later
+* iOS 10.0 or later
 
 ## Usage
 
@@ -43,7 +43,6 @@ KeyReplySDK can be initialize programmatically like regular UIView:
 CGRect chatFrame = CGRectMake(0, 0, 320, 480);
 KEYKeyReplyView * keyReplyView = [[KEYKeyReplyView alloc] initWithFrame:chatFrame];
 [self.view addSubview:keyReplyView];
-keyReplyView.clientId = @"5f6cc7e4e2";
 [keyReplyView reload];
 ```
 

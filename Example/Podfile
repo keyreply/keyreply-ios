@@ -1,18 +1,17 @@
-source 'https://github.com/CocoaPods/Specs.git'
 
 use_frameworks!
 
-platform :ios, '8.0'
+platform :ios, '10.0'
 
 target 'KeyReply_Example' do
-#  pod 'KeyReply', :path => "../"
+  pod 'OneSignal', '~> 3.0.0'
+  pod 'KeyReply', :path => "../"
 
   target 'KeyReply_Tests' do
     inherit! :search_paths
-
+    
     pod 'Specta'
     pod 'Expecta'
     pod 'Expecta+Snapshots'
   end
-
 end

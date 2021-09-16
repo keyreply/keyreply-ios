@@ -3,11 +3,13 @@
 //  KeyReply_Example
 //
 //  Created by Jeremy Pek on 11/10/18.
-//  Copyright © 2018 Torin Nguyen. All rights reserved.
+//  Copyright © 2018 KeyReply. All rights reserved.
 //
 
 #import <WebKit/WebKit.h>
+#import <OneSignal/OneSignal.h>
 #import "KEYKeyReplyView.h"
+
 
 #define CUSTOM_USER_AGENT               @"KeyReplyiOSSDK"
 
@@ -147,6 +149,15 @@
     [self.settingDict setObject:[NSNumber numberWithBool:YES] forKey:@"appTokenConfigured"];
 }
 
+#pragma mark - Notifications
+
+- (void)initUserWithTagID:(NSString *)tagID {
+    [OneSignal sendTags:@{@"user_id" : tagID, @"isLeaveChatScreen" : [NSString stringWithFormat: @"%@", [NSNumber numberWithBool:NO]] }];
+}
+
+- (void)updateAppMode:(BOOL)isBackgroundMode {
+    [OneSignal sendTag:@"isLeaveChatScreen" value:[NSString stringWithFormat: @"%@", [NSNumber numberWithBool:isBackgroundMode]]];
+}
 
 #pragma mark - Public Interfaces
 -(void) clearCache {
@@ -166,10 +177,10 @@
     }];
 }
 
--(BOOL)verifyJWT {
+- (BOOL)verifyJWT {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString* serverUrl = [self serverSetting];
-    NSString* apiUrl = [serverUrl stringByAppendingString:@"/api/verify_token"];
+    NSString* apiUrl = [serverUrl stringByAppendingString:@"api/verify_token"];
     // get token from usersetting
     NSMutableDictionary * userDict = [self userSetting];
     NSString* token = [userDict valueForKey:@"JWT"];
@@ -178,6 +189,7 @@
     NSData* jsonData = [NSJSONSerialization dataWithJSONObject:userDictionary options:NSJSONWritingPrettyPrinted error: &error];
     // setting request params
     [request setURL:[NSURL URLWithString:apiUrl]];
+    [request setValue:@"application/json" forHTTPHeaderField:@"content-type"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:jsonData];
     
@@ -196,7 +208,7 @@
     }
 }
 //new method >>
--(void)setInitWithJWT:(NSString*)jwttoken {
+- (void)setInitWithJWT:(NSString*)jwttoken {
     NSMutableDictionary * userDict = self.settingDict[@"user"];
     [userDict setValue:jwttoken forKey:@"JWT"];
     [self setUserSetting:userDict];
@@ -207,7 +219,7 @@
     }];
 }
 
--(NSString *)generateJWT {
+- (NSString *)generateJWT {
     if(self.generateJWTfunc) {
         return [self.parent performSelector:self.generateJWTfunc];
     }
@@ -229,6 +241,7 @@
     if(self.resizefunc) {
         [self.parent performSelector:self.resizefunc withObject:@"true"];
     }
+    [self updateAppMode:NO];
     [self performKeyReplyAction:ACTION_OPEN_CHAT_WINDOW parameter:nil completionHandler:^(id _Nullable results, NSError * _Nullable error) {
         
     }];
@@ -239,6 +252,7 @@
     if(self.resizefunc) {
         [self.parent performSelector:self.resizefunc withObject:@"false"];
     }
+    [self updateAppMode: YES];
     [self performKeyReplyAction:ACTION_CLOSE_CHAT_WINDOW parameter:nil completionHandler:^(id _Nullable results, NSError * _Nullable error) {
         
     }];
@@ -298,7 +312,7 @@
     }];
 }
 
--(void) initiateWebChat {
+- (void)initiateWebChat {
     if(self.settingDict[@"server"] == nil) {
         NSException *e = [NSException
                           exceptionWithName:@"ServerSettingNotFoundException"
@@ -312,7 +326,7 @@
     
     if(token != nil && ![self verifyJWT]) {
         [self generateJWT]; // async method which will complete and call 
-    }else {
+    } else {
         NSString * payloadJsonString = [self convertDictionaryToString:self.settingDict];
         [self performKeyReplyAction:ACTION_INITIALIZE parameter:payloadJsonString completionHandler:^(id _Nullable results, NSError * _Nullable error) {
             NSLog(@"Init error:\n%@", error);

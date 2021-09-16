@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KeyReply'
-  s.version          = '0.0.17'
+  s.version          = '0.0.2'
   s.summary          = 'KeyReply SDK for iOS'
 
 # This description is used to generate tags and improve search results.
@@ -27,15 +27,16 @@ KeyReply is your top choice for chatbots: We have worked with top governments an
   s.author           = { 'KeyReply' => 'developer@keyreply.com' }
   s.source           = { :git => 'https://github.com/keyreply/keyreply-ios.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'KeyReply/Classes/**/*'
-  
+  s.static_framework = true
   # s.resource_bundles = {
   #   'KeyReply' => ['KeyReply/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+   s.dependency 'OneSignal', '~> 3.0.0'
+
 end

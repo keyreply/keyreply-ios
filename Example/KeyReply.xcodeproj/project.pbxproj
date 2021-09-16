@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17401EBE26B94EC100E88B4B /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 17401EBD26B94EC100E88B4B /* NotificationService.m */; };
+		17401EC226B94EC100E88B4B /* KeyReplyNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 17401EBA26B94EC100E88B4B /* KeyReplyNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4B86BE79DD35E3121509F60E /* Pods_KeyReply_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368AF2A14C2080CE4542ACBE /* Pods_KeyReply_Tests.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -22,12 +24,18 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
-		7AA6EA43D35758572DCD6721 /* Pods_KeyReply_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D528862E29508098859579E /* Pods_KeyReply_Example.framework */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		A72269C721CB82E90073E4DB /* KEYKeyReplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A72269C621CB82E90073E4DB /* KEYKeyReplyView.m */; };
+		9D392309D691D9760F28E350 /* Pods_KeyReply_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D528862E29508098859579E /* Pods_KeyReply_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		17401EC026B94EC100E88B4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6003F582195388D10070C39A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17401EB926B94EC100E88B4B;
+			remoteInfo = KeyReplyNotificationServiceExtension;
+		};
 		6003F5B3195388D20070C39A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6003F582195388D10070C39A /* Project object */;
@@ -37,8 +45,27 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		17401EC326B94EC100E88B4B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				17401EC226B94EC100E88B4B /* KeyReplyNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0D528862E29508098859579E /* Pods_KeyReply_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyReply_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17401EBA26B94EC100E88B4B /* KeyReplyNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = KeyReplyNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		17401EBC26B94EC100E88B4B /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		17401EBD26B94EC100E88B4B /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		17401EBF26B94EC100E88B4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17D2CC9126BBC88500C0ED47 /* KeyReply_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeyReply_Example.entitlements; sourceTree = "<group>"; };
 		368AF2A14C2080CE4542ACBE /* Pods_KeyReply_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KeyReply_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		48F9ACF6FCE5FFA9E65EE200 /* Pods-KeyReply_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyReply_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyReply_Example/Pods-KeyReply_Example.release.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* KeyReply_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyReply_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,14 +92,19 @@
 		71107576FBFA846EE49838CB /* Pods-KeyReply_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyReply_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyReply_Tests/Pods-KeyReply_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A72269C521CB82E90073E4DB /* KEYKeyReplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KEYKeyReplyView.h; sourceTree = "<group>"; };
-		A72269C621CB82E90073E4DB /* KEYKeyReplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KEYKeyReplyView.m; sourceTree = "<group>"; };
 		A99F22B2E1C7C667C4D89C01 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E1C7E060EFB1EB8910078E32 /* Pods-KeyReply_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyReply_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KeyReply_Example/Pods-KeyReply_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FD339C48A4DFA0B281F949B6 /* Pods-KeyReply_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KeyReply_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KeyReply_Tests/Pods-KeyReply_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		17401EB726B94EC100E88B4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6003F587195388D20070C39A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -80,7 +112,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				7AA6EA43D35758572DCD6721 /* Pods_KeyReply_Example.framework in Frameworks */,
+				9D392309D691D9760F28E350 /* Pods_KeyReply_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,12 +141,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		17401EBB26B94EC100E88B4B /* KeyReplyNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				17401EBC26B94EC100E88B4B /* NotificationService.h */,
+				17401EBD26B94EC100E88B4B /* NotificationService.m */,
+				17401EBF26B94EC100E88B4B /* Info.plist */,
+			);
+			path = KeyReplyNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
+				17D2CC9126BBC88500C0ED47 /* KeyReply_Example.entitlements */,
 				60FF7A9C1954A5C5007DD14C /* Podspec Metadata */,
 				6003F593195388D20070C39A /* Example for KeyReply */,
 				6003F5B5195388D20070C39A /* Tests */,
+				17401EBB26B94EC100E88B4B /* KeyReplyNotificationServiceExtension */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
 				1084393A59BC637FED27BD09 /* Pods */,
@@ -126,6 +170,7 @@
 			children = (
 				6003F58A195388D20070C39A /* KeyReply_Example.app */,
 				6003F5AE195388D20070C39A /* KeyReply_Tests.xctest */,
+				17401EBA26B94EC100E88B4B /* KeyReplyNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,8 +191,6 @@
 		6003F593195388D20070C39A /* Example for KeyReply */ = {
 			isa = PBXGroup;
 			children = (
-				A72269C521CB82E90073E4DB /* KEYKeyReplyView.h */,
-				A72269C621CB82E90073E4DB /* KEYKeyReplyView.m */,
 				6003F59C195388D20070C39A /* KEYAppDelegate.h */,
 				6003F59D195388D20070C39A /* KEYAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -204,6 +247,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		17401EB926B94EC100E88B4B /* KeyReplyNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17401EC626B94EC100E88B4B /* Build configuration list for PBXNativeTarget "KeyReplyNotificationServiceExtension" */;
+			buildPhases = (
+				17401EB626B94EC100E88B4B /* Sources */,
+				17401EB726B94EC100E88B4B /* Frameworks */,
+				17401EB826B94EC100E88B4B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeyReplyNotificationServiceExtension;
+			productName = KeyReplyNotificationServiceExtension;
+			productReference = 17401EBA26B94EC100E88B4B /* KeyReplyNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		6003F589195388D20070C39A /* KeyReply_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6003F5BF195388D20070C39A /* Build configuration list for PBXNativeTarget "KeyReply_Example" */;
@@ -212,10 +272,12 @@
 				6003F586195388D20070C39A /* Sources */,
 				6003F587195388D20070C39A /* Frameworks */,
 				6003F588195388D20070C39A /* Resources */,
+				17401EC326B94EC100E88B4B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				17401EC126B94EC100E88B4B /* PBXTargetDependency */,
 			);
 			name = KeyReply_Example;
 			productName = KeyReply;
@@ -248,11 +310,17 @@
 		6003F582195388D10070C39A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				CLASSPREFIX = KEY;
+				CLASSPREFIX = KR;
 				LastUpgradeCheck = 1000;
-				ORGANIZATIONNAME = "Torin Nguyen";
+				ORGANIZATIONNAME = KeyReply;
 				TargetAttributes = {
+					17401EB926B94EC100E88B4B = {
+						CreatedOnToolsVersion = 12.5.1;
+						DevelopmentTeam = NDR34U859K;
+						ProvisioningStyle = Automatic;
+					};
 					6003F589195388D20070C39A = {
+						DevelopmentTeam = NDR34U859K;
 						ProvisioningStyle = Automatic;
 					};
 					6003F5AD195388D20070C39A = {
@@ -265,6 +333,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -275,11 +344,19 @@
 			targets = (
 				6003F589195388D20070C39A /* KeyReply_Example */,
 				6003F5AD195388D20070C39A /* KeyReply_Tests */,
+				17401EB926B94EC100E88B4B /* KeyReplyNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		17401EB826B94EC100E88B4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6003F588195388D20070C39A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -308,7 +385,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-KeyReply_Tests/Pods-KeyReply_Tests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-KeyReply_Tests/Pods-KeyReply_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Expecta/Expecta.framework",
 				"${BUILT_PRODUCTS_DIR}/Expecta+Snapshots/Expecta_Snapshots.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSnapshotTestCase/FBSnapshotTestCase.framework",
@@ -323,7 +400,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KeyReply_Tests/Pods-KeyReply_Tests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KeyReply_Tests/Pods-KeyReply_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		71C2460124F918483A8B2D80 /* [CP] Check Pods Manifest.lock */ = {
@@ -365,12 +442,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		17401EB626B94EC100E88B4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17401EBE26B94EC100E88B4B /* NotificationService.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6003F586195388D20070C39A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* KEYAppDelegate.m in Sources */,
-				A72269C721CB82E90073E4DB /* KEYKeyReplyView.m in Sources */,
 				6003F5A7195388D20070C39A /* KEYViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
@@ -387,6 +471,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		17401EC126B94EC100E88B4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17401EB926B94EC100E88B4B /* KeyReplyNotificationServiceExtension */;
+			targetProxy = 17401EC026B94EC100E88B4B /* PBXContainerItemProxy */;
+		};
 		6003F5B4195388D20070C39A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6003F589195388D20070C39A /* KeyReply_Example */;
@@ -422,6 +511,63 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		17401EC426B94EC100E88B4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = NDR34U859K;
+				EXCLUDED_ARCHS = arm;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = KeyReplyNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keyreply.chatbot.KeyReplyNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		17401EC526B94EC100E88B4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Originally US LLP";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = NDR34U859K;
+				EXCLUDED_ARCHS = arm;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = KeyReplyNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = us.originally.demoKeyReply.KeyReplyNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		6003F5BD195388D20070C39A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -468,7 +614,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -514,7 +660,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -526,14 +672,16 @@
 			baseConfigurationReference = E1C7E060EFB1EB8910078E32 /* Pods-KeyReply_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KeyReply_Example.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = NDR34U859K;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KeyReply/KeyReply-Prefix.pch";
 				INFOPLIST_FILE = "KeyReply/KeyReply-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = us.originally.demoKeyReply;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keyreply.chatbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
@@ -545,17 +693,19 @@
 			baseConfigurationReference = 48F9ACF6FCE5FFA9E65EE200 /* Pods-KeyReply_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Originally US LLP";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = L4W2ME86EE;
+				CODE_SIGN_ENTITLEMENTS = KeyReply_Example.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NDR34U859K;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KeyReply/KeyReply-Prefix.pch";
 				INFOPLIST_FILE = "KeyReply/KeyReply-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = us.originally.demoKeyReply;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keyreply.chatbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d2e78066-132c-4f9d-9829-e46c5bd7dd68";
-				PROVISIONING_PROFILE_SPECIFIER = "Wildcard In-house Distribution";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -609,6 +759,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		17401EC626B94EC100E88B4B /* Build configuration list for PBXNativeTarget "KeyReplyNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17401EC426B94EC100E88B4B /* Debug */,
+				17401EC526B94EC100E88B4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6003F585195388D10070C39A /* Build configuration list for PBXProject "KeyReply" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

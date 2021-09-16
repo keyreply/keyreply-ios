@@ -3,7 +3,7 @@
 //  KeyReply
 //
 //  Created by Jeremy Pek on 11/10/18.
-//  Copyright © 2018 Torin Nguyen. All rights reserved.
+//  Copyright © 2018 KeyReply. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -32,5 +32,9 @@
 
 //new method >>
 -(void)setInitWithJWT:(NSString*)jwttoken;
+
+#pragma mark - Notifications
+
+- (void)initUserWithTagID:(NSString *_Nonnull)tagID;
 
 @end

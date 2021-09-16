@@ -27,6 +27,7 @@
 
     [self setupChatView];
     [self configureUserSetting];
+    
 }
 
 #pragma mark - Utils
@@ -35,8 +36,12 @@
 {
     [self.chatView setEnvUrl: ENV_WEBCHAT_URL];
     [self.chatView setServerSetting: SERVER_URL];
+    
+    [self.chatView initUserWithTagID:@"xxx@keyreply.com"]; //Need to configure with UserID
+    
     [self.chatView enableAppTokenConfiguredInSetting];
     [self.chatView setGenerateJWTFunc:@selector(getNewToken) fromObject:self];
+    [self.chatView reload];
 }
 
 #pragma mark - Helper
@@ -64,7 +69,7 @@
 
 - (NSString*)getNewToken {
 //    generate the new token here
-    NSString * token = @"new token to be assign";
+    return token;
 }
 
 #pragma mark - Actions
