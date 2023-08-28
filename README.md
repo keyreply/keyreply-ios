@@ -25,7 +25,7 @@ You can also add this project:
 ## Requirements
 
 * Xcode 8.0 or later
-* iOS 10.0 or later
+* iOS 11.0 or later
 
 ## Usage
 

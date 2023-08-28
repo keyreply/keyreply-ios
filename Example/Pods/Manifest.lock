@@ -5,16 +5,13 @@ PODS:
     - FBSnapshotTestCase/Core (~> 2.0)
     - Specta (~> 1.0)
   - FBSnapshotTestCase/Core (2.1.4)
-  - KeyReply (0.0.2):
-    - OneSignal (~> 3.0.0)
-  - OneSignal (3.0.1)
+  - KeyReply (0.1.1)
   - Specta (1.0.7)
 
 DEPENDENCIES:
   - Expecta
   - "Expecta+Snapshots"
   - KeyReply (from `../`)
-  - OneSignal (~> 3.0.0)
   - Specta
 
 SPEC REPOS:
@@ -22,7 +19,6 @@ SPEC REPOS:
     - Expecta
     - "Expecta+Snapshots"
     - FBSnapshotTestCase
-    - OneSignal
     - Specta
 
 EXTERNAL SOURCES:
@@ -33,10 +29,9 @@ SPEC CHECKSUMS:
   Expecta: 3b6bd90a64b9a1dcb0b70aa0e10a7f8f631667d5
   "Expecta+Snapshots": dcff217eef506dabd6dfdc7864ea2da321fafbb8
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  KeyReply: 09eb4dbfd527245e9f76c88a078eaec83c161bec
-  OneSignal: 29b4046637f63c7212785f47f0eb1f2472649285
+  KeyReply: 03864e618b075d5a47038ea3f0eb9b0f28e4e255
   Specta: 3e1bd89c3517421982dc4d1c992503e48bd5fe66
 
-PODFILE CHECKSUM: 101c35e67734d4366dc7a3650588869925de33d7
+PODFILE CHECKSUM: 339e1aeea6a710ba7ad8e949de79926958130278
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.12.1

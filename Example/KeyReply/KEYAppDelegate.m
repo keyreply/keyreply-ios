@@ -7,23 +7,11 @@
 //
 
 #import "KEYAppDelegate.h"
-#import "KRKeyReplyNotificationService.h"
-#import <UserNotifications/UserNotifications.h>
 
 @implementation KEYAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    Setup AppID Here
-//    [KRKeyReplyNotificationService initWithLaunchOptions:launchOptions withAppID:@""];
-    [[UNUserNotificationCenter currentNotificationCenter]
-     requestAuthorizationWithOptions:(UNAuthorizationOptionBadge |
-                                      UNAuthorizationOptionAlert |
-                                      UNAuthorizationOptionSound)
-     completionHandler:^(BOOL granted, NSError * _Nullable error) {
-            
-    }];
-    
     
     return YES;
 }

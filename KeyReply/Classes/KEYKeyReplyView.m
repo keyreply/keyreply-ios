@@ -7,7 +7,6 @@
 //
 
 #import <WebKit/WebKit.h>
-#import <OneSignal/OneSignal.h>
 #import "KEYKeyReplyView.h"
 
 
@@ -105,7 +104,7 @@
 
 - (void)reload
 {
-    [self loadUrl:[self.webViewUrl stringByAppendingString:@"/?manual=true"]];
+    [self loadUrl: self.webViewUrl];
 }
 
 #pragma mark - Public Settings
@@ -147,16 +146,6 @@
 - (void)enableAppTokenConfiguredInSetting;
 {
     [self.settingDict setObject:[NSNumber numberWithBool:YES] forKey:@"appTokenConfigured"];
-}
-
-#pragma mark - Notifications
-
-- (void)initUserWithTagID:(NSString *)tagID {
-    [OneSignal sendTags:@{@"user_id" : tagID, @"isLeaveChatScreen" : [NSString stringWithFormat: @"%@", [NSNumber numberWithBool:NO]] }];
-}
-
-- (void)updateAppMode:(BOOL)isBackgroundMode {
-    [OneSignal sendTag:@"isLeaveChatScreen" value:[NSString stringWithFormat: @"%@", [NSNumber numberWithBool:isBackgroundMode]]];
 }
 
 #pragma mark - Public Interfaces
@@ -241,7 +230,6 @@
     if(self.resizefunc) {
         [self.parent performSelector:self.resizefunc withObject:@"true"];
     }
-    [self updateAppMode:NO];
     [self performKeyReplyAction:ACTION_OPEN_CHAT_WINDOW parameter:nil completionHandler:^(id _Nullable results, NSError * _Nullable error) {
         
     }];
@@ -252,7 +240,6 @@
     if(self.resizefunc) {
         [self.parent performSelector:self.resizefunc withObject:@"false"];
     }
-    [self updateAppMode: YES];
     [self performKeyReplyAction:ACTION_CLOSE_CHAT_WINDOW parameter:nil completionHandler:^(id _Nullable results, NSError * _Nullable error) {
         
     }];
@@ -450,11 +437,17 @@
             NSArray *items =[absUrl componentsSeparatedByString:@"tab="];;
             NSString *urlString = [items objectAtIndex:1];
             NSURL* url =[NSURL URLWithString:urlString];
-            [[UIApplication sharedApplication] openURL:url];
+            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
             decisionHandler(WKNavigationActionPolicyCancel);
             return;
         }
         [self handleSDKcallback:navigationAction.request.URL];
+        decisionHandler(WKNavigationActionPolicyCancel);
+        return;
+    }
+    if (![absUrl isEqualToString:self.webViewUrl]) {
+        NSURL* url =[NSURL URLWithString:absUrl];
+        [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
         decisionHandler(WKNavigationActionPolicyCancel);
         return;
     }

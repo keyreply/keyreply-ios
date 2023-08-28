@@ -19,22 +19,18 @@
 - (void)setUserSetting:(NSMutableDictionary* _Nonnull)user;
 - (NSMutableDictionary * _Nonnull)userSetting;
 - (void)enableAppTokenConfiguredInSetting;
-- (void)renewJWT:(NSString*)newJWT;
+- (void)renewJWT:(NSString*_Nonnull)newJWT;
 
 - (void)openChatWindow;
 - (void)closeChatWindow;
 - (void)toggleChatWindow;
 - (void)availableActions:(void (^ _Nullable)(NSString * _Nonnull actions))completionHandler;
 - (void)sendMessage:(NSString * _Nonnull)message;
-- (void)setEnvUrl:(NSString*)url;
-- (void)setChatWindowResizeFunc:(SEL)func fromObject:(id) object;
-- (void)setGenerateJWTFunc:(SEL)func fromObject:(id) object;
+- (void)setEnvUrl:(NSString*_Nonnull)url;
+- (void)setChatWindowResizeFunc:(SEL _Nonnull)func fromObject:(id _Nonnull) object;
+- (void)setGenerateJWTFunc:(SEL _Nonnull)func fromObject:(id _Nonnull) object;
 
 //new method >>
--(void)setInitWithJWT:(NSString*)jwttoken;
-
-#pragma mark - Notifications
-
-- (void)initUserWithTagID:(NSString *_Nonnull)tagID;
+-(void)setInitWithJWT:(NSString*_Nonnull)jwttoken;
 
 @end
